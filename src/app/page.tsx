@@ -2,24 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   generateCharacter,
 } from "@/lib/character-generator";
 import { Character } from "@/lib/character-generator/types";
 
-const AttributeItem = ({
-  name,
-  description,
-}: {
-  name: string;
-  description: string;
-}) => (
-  <div className="py-2">
-    <p className="font-semibold">{name}</p>
-    <p className="text-sm text-muted-foreground">{description}</p>
-  </div>
-);
+
 
 export default function Home() {
   const [lastDeath, setLastDeath] = useState<"honour" | "dishonour" | null>(
@@ -31,6 +20,11 @@ export default function Home() {
     const newCharacter = generateCharacter();
     setCharacter(newCharacter);
   };
+
+  useEffect(() => {
+    // Generate a character on initial load
+    handleGenerate();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-body p-4 sm:p-6 md:p-8">
@@ -61,6 +55,7 @@ export default function Home() {
 
         <div className="text-center space-y-4">
           <p>Your last warrior died with...</p>
+
           <div className="flex justify-center gap-4">
             <Button
               variant={lastDeath === "honour" ? "default" : "outline"}
@@ -78,6 +73,7 @@ export default function Home() {
             >
               Dishonour
             </Button>
+
           </div>
         </div>
 
@@ -119,11 +115,11 @@ export default function Home() {
 
             <div className="flex justify-around items-center text-center flex-wrap gap-4 text-sm sm:text-base">
               <p>
-                <span className="font-bold">HP</span> {character.hitPoints}
+                <span className="font-bold">HP</span> <span className="">{character.hitPoints}</span>
               </p>
               <p>
                 <span className="font-bold">Virtues</span>{" "}
-                {character.virtues} (d{character.virtuesDice})
+                {character.virtues} ({character.virtuesDice})
               </p>
               <p>
                 <span className="font-bold">Honour</span> {character.honor} (
@@ -183,7 +179,7 @@ export default function Home() {
                 <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
                   {character.classWeapons.map((weapon, index) => (
                     <li key={index}>
-                      {weapon.name} d{weapon.damage}
+                      {weapon.name} {weapon.damage}
                     </li>
                   ))}
                 </ul>
@@ -229,38 +225,47 @@ export default function Home() {
             </div>
 
             {(character.unseenText || character.shintaiText) && (
-              <>
-                <Separator className="my-8" />
-                <div className="text-center space-y-4 py-8">
+            <>
+              <Separator className="my-8" />
+              <div className="py-8 flex justify-center">
+                <div className="flex w-full max-w-4xl items-start gap-8">
                   {character.unseenText && (
-                    <>
-                      <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
-                        Unseen Text
-                      </p>
+                    <div className="flex-1 space-y-4 text-center">
                       <h3 className="text-2xl font-headline font-bold text-primary tracking-wider">
-                        {character.unseenText.name}
+                        Unseen Text
                       </h3>
+                      <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
+                        {character.unseenText.title}
+                      </p>
                       <p className="text-muted-foreground">
                         {character.unseenText.description}
                       </p>
-                    </>
+                    </div>
                   )}
+
+                  {/* Linea verticale di separazione */}
+                  {character.unseenText && character.shintaiText && (
+                    <div className="w-px bg-border h-auto self-stretch" />
+                  )}
+
                   {character.shintaiText && (
-                    <>
-                      <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
-                        Shintai Text
-                      </p>
+                    <div className="flex-1 space-y-4 text-center">
                       <h3 className="text-2xl font-headline font-bold text-primary tracking-wider">
-                        {character.shintaiText.name}
+                        Shintai Text
                       </h3>
+                      <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
+                        {character.shintaiText.title}
+                      </p>
                       <p className="text-muted-foreground">
                         {character.shintaiText.description}
                       </p>
-                    </>
+                    </div>
                   )}
                 </div>
-              </>
-            )}
+              </div>
+            </>
+          )}
+
 
             <div className="text-center pb-8">
               <Button

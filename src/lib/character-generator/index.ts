@@ -25,6 +25,7 @@ function rollForStartingWeapon(): Weapon | undefined {
 export function generateCharacter(): Character {
     const selectedClass = getRandomItem(classes);
     const classMods = classFeatures[selectedClass].modifiers;
+    console.log("Selected class:", selectedClass);
     const firstName = getRandomItem(firstNames);
     const lastName = getRandomItem(lastNames);
     const nickName = getRandomItem(nickNames);
@@ -43,7 +44,7 @@ export function generateCharacter(): Character {
     const randomCarry = rollForEquipment(carryMap, selectedClass);
     equipment.push(randomCarry);
 
-    const randomEquipmentRoll = rollDice(1, equipmentMap.size);
+    // const randomEquipmentRoll = rollDice(1, equipmentMap.size);
     const randomEquipment = rollForEquipment(equipmentMap, selectedClass);
     const texts: (UnseenText | ShintaiText)[] = [];
     const food = rollDice(1, 4);

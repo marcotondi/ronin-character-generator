@@ -90,11 +90,11 @@ body {
 /* Immagine Ronin in alto a destra, ruotata */
 .ronin-img-topright {
   position: absolute;
-  top: 75px;
-  right: 40px;
-  width: 180px;
-  height: 180px;
+  top: 18vh;         /* 5% dell'altezza della viewport */
+  right: 5vw;       /* 3% della larghezza della viewport */
+  width: 15vw;      /* 15% della larghezza della viewport */
+  height: auto;     /* Mantieni le proporzioni */
   object-fit: contain;
-  transform: rotate(7deg);
+  transform: rotate(25deg);
   z-index: 10;
 }
