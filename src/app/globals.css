@@ -86,3 +86,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Immagine Ronin in alto a destra, ruotata */
+.ronin-img-topright {
+  position: absolute;
+  top: 75px;
+  right: 40px;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  transform: rotate(7deg);
+  z-index: 10;
+}

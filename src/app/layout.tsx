@@ -1,4 +1,4 @@
-import Footer from '@/components/Footer';
+import Footer from '@/components/ui/Footer';
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -26,7 +26,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased" style={{ position: 'relative', minHeight: '100vh' }}>
+        {/* Immagine PNG ruotata in alto a destra */}
+        <img
+          src="/img/compwith_ronin.png"
+          alt="Ronin"
+          className="ronin-img-topright"
+        />
         {children}
         <Footer />
       </body>
