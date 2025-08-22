@@ -1,8 +1,11 @@
 import type {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 const nextConfig: NextConfig = {
-  /* config options here */
   output: 'export',
+  trailingSlash: true, // Importante per l'export statico
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -10,6 +13,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    unoptimized: true, // Necessario per l'export statico
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,6 +23,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Aggiungi la configurazione next-intl manualmente
+  experimental: {
+    typedRoutes: false
+  }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

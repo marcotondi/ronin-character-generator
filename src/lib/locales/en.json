@@ -1,0 +1,820 @@
+{
+  "page":{
+    "title":"GENERATE YOUR PG",
+    "lastWarrior":"Your last warrior died with...",
+    "honour":"Honour",
+    "dishonour":"Dishonour",
+    "click":"CLICK",
+    "forNew":"FOR NEW",
+    "warrior":"WARRIOR",
+    "youAre":"You are...",
+    "the":"...the...",
+    "hp":"HP",
+    "virtues":"Virtues",
+    "honor":"Honour",
+    "ryo":"Ryo",
+    "attributes":"Attributes",
+    "abilities":"Abilities",
+    "swiftness":"Swiftness",
+    "spirit":"Spirit",
+    "vigor":"Vigor",
+    "resilience":"Resilience",
+    "youMustFollow":"You must follow...",
+    "weapons":"WEAPONS",
+    "armour":"ARMOUR",
+    "tier":"Tier",
+    "equipment":"Equipment",
+    "feature":"Feature",
+    "unseenText":"Unseen Text",
+    "shintaiText":"Shintai Text",
+    "download":"Download Character Sheet"
+  },
+  "characterGenerator":{
+    "classes":{
+      "forgottenRonin":"Forgotten Ronin",
+      "eruditeSamurai":"Erudite Samurai",
+      "drunkenMonk":"Drunken Monk",
+      "corruptedShinobi":"Corrupted Shinobi",
+      "onmyoji":"Onmyoji",
+      "bakuto":"Bakuto",
+      "yamabushi":"Yamabushi",
+      "wildDancer":"Wild Dancer",
+      "recklessSumo":"Reckless Sumo",
+      "swordSaint":"Sword Saint"
+    },
+    "nickNames":{
+      "hawkEye":"Hawk Eye",
+      "dragonOfTheSea":"Dragon of the Sea",
+      "thunderFang":"Thunder Fang",
+      "riverGod":"River God",
+      "mountainWind":"Mountain Wind",
+      "swordSaintOfTheWind":"Sword Saint of the Wind",
+      "demonOfTheFog":"Demon of the Fog",
+      "tigerOfHell":"Tiger of Hell",
+      "foxOfTheNight":"Fox of the Night",
+      "blackFang":"Black Fang",
+      "tigerDemon":"Tiger Demon",
+      "catsPaw":"Cat's Paw",
+      "windTengu":"Wind Tengu",
+      "manSlayer":"Man Slayer",
+      "knightOfDarkness":"Knight of Darkness",
+      "monsterBoss":"Monster Boss",
+      "flowerGeisha":"Flower Geisha",
+      "warriorOfThunder":"Warrior of Thunder",
+      "ghostlyWanderer":"Ghostly Wanderer",
+      "blackShadow":"Black Shadow"
+    },
+    "carryMap":{
+      "emptyHanded":"Empty-handed",
+      "backpack":"Backpack up to 7 small items",
+      "sack":"Sack up to 10 small items",
+      "smallWagon":"Small wagon",
+      "trustyPackAnimal":"Trusty pack animal"
+    },
+    "equipmentMap":{
+      "rope":"Rope 30 ft",
+      "torches":"5 Torches",
+      "lantern":"Lantern with oil for 6 hours",
+      "magnesiumStrip":"Magnesium strip",
+      "unseenText":"An Unseen Text",
+      "firecrackers":"4 Firecrackers",
+      "healersKits":"4 Healers Kits",
+      "metalFileAndLockpicks":"Metal file and lockpicks",
+      "bearTrap":"Bear trap Spirit DR14 to spot, d8 damage",
+      "blackPowderBomb":"Black powder bomb d10 damage",
+      "snakeVenomShuriken":"4 Snake venom shuriken Resilience DR12 or d8 damage",
+      "silverTalisman":"Silver talisman defence DR against yokai DR10"
+    },
+    "startingWeapons":{
+      "shuriken":{
+        "name":"Shuriken",
+        "amount":"(x10)"
+      },
+      "tanto":{
+        "name":"Tanto"
+      },
+      "yumi":{
+        "name":"Yumi",
+        "amount":"(Spirit+10 arrows)"
+      },
+      "boStaff":{
+        "name":"Bo Staff"
+      },
+      "naginata":{
+        "name":"Naginata"
+      },
+      "kusarigama":{
+        "name":"Kusarigama",
+        "amount":"(melee/ranged)"
+      },
+      "wakizashi":{
+        "name":"Wakizashi"
+      },
+      "nunchaku":{
+        "name":"Nunchaku"
+      },
+      "tanegashima":{
+        "name":"Tanegashima",
+        "amount":"(Spirit+5 bullets)"
+      },
+      "katana":{
+        "name":"Katana"
+      }
+    },
+    "unseenTexts":{
+      "whirlwindBlade":{
+        "title":"Whirlwind Blade",
+        "description":"Unleash a flurry (d4) of air strikes against a single enemy, dealing d6 damage per hit."
+      },
+      "soothingBreeze":{
+        "title":"Soothing Breeze",
+        "description":"Heal d6 HP for yourself or an ally."
+      },
+      "thunderingRoar":{
+        "title":"Thundering Roar",
+        "description":"Stun a single enemy for 1 round."
+      },
+      "eagleEye":{
+        "title":"Eagle Eye",
+        "description":"Gain +4 to hit for your next attack."
+      },
+      "shadowStep":{
+        "title":"Shadow Step",
+        "description":"Instantly move to any visible location."
+      },
+      "burningBlade":{
+        "title":"Burning Blade",
+        "description":"Ignite your weapon, dealing an extra d4 damage with each hit for d6 rounds."
+      },
+      "steelBarrier":{
+        "title":"Steel Barrier",
+        "description":"Gain +2 to Swiftness tests for defence for d6 rounds."
+      },
+      "spectralGuardian":{
+        "title":"Spectral Guardian",
+        "description":"Summon a skeletal ronin to fight alongside you for d6 rounds."
+      },
+      "soulDrain":{
+        "title":"Soul Drain",
+        "description":"Deal d8 damage and gain that much HP for yourself (can take you above max HP)."
+      },
+      "voidBlast":{
+        "title":"Void Blast",
+        "description":"Unleash a blast of negative energy that deals d8 damage to all enemies you can see."
+      }
+    },
+    "shintaiTexts":{
+      "blessingOfTheGods":{
+        "title":"Blessing of the Gods",
+        "description":"Restore d10 HP to d2 creatures."
+      },
+      "graceOfRedemption":{
+        "title":"Grace of Redemption",
+        "description":"A creature of your choice gains +d6 on one roll."
+      },
+      "speakWithTheDeparted":{
+        "title":"Speak with the Departed",
+        "description":"Ask three questions to a deceased creature."
+      },
+      "spiritShield":{
+        "title":"Spirit Shield",
+        "description":"A creature of your choice gains 2d6 extra HP for d3 rounds."
+      },
+      "visionsOfTheBeyond":{
+        "title":"Visions of the Beyond",
+        "description":"One creature, dead for no more than a week, is awakened with terrible memories."
+      },
+      "bestialCommunion":{
+        "title":"Bestial Communion",
+        "description":"You may speak with animals for d20 minutes."
+      },
+      "divineIllumination":{
+        "title":"Divine Illumination",
+        "description":"Light or darkness for 3d10 minutes."
+      },
+      "pureInsight":{
+        "title":"Pure Insight",
+        "description":"You find all traps in your path for 2d10 minutes."
+      },
+      "holyRetribution":{
+        "title":"Holy Retribution",
+        "description":"d4 creatures lose d8 HP each."
+      },
+      "wordOfTheGods":{
+        "title":"Word of the Gods",
+        "description":"One creature blindly obeys a single command."
+      }
+    },
+    "brokenBodies":{
+      "glazedExpression":"always staring with a glazed expression",
+      "scarsOrWounds":"covered in scars or wounds, some of which are infected",
+      "missingLimb":"missing a limb, using a makeshift prosthesis",
+      "emaciatedAndFrail":"emaciated and frail, with sunken eyes and greyish skin",
+      "severelyBurned":"severely burned on the face and hands, using a mask to hide them",
+      "deafInOneEar":"deaf in one ear, struggling to hear from the other",
+      "missingTeeth":"missing teeth, some rotten, speaking with a lisp",
+      "crippled":"crippled, walking with a limp or hunchbacked",
+      "boilsOrBlisters":"covered in boils or blisters, constantly scratching",
+      "persistentlyCoughAndWheezing":"persistently cough and wheezing",
+      "insectBites":"covered in insect bites",
+      "missingYourTongue":"missing your tongue",
+      "nervousSystemDamage":"suffering from nervous system damage, making youe hands shake and twitch",
+      "severelyObese":"severely obese or suffering from malnutrition, either way you are always hungry",
+      "missingFingersOrToes":"missing fingers or toes",
+      "breathingHeavily":"breathing heavily and snoring loudly because of your broken nose",
+      "permanentlyScowling":"permanently scowling or smiling, making social interaction difficult",
+      "chronicSkinCondition":"suffering from a chronic skin condition, leaving skin flaky or weeping",
+      "blind":"blind or suffering from vision problems",
+      "notVeryClean":"not very clean, with cracked, discoloured nails and signs of fungal infection"
+    },
+    "grimChronicles":{
+      "fledFromClan":"fled from a powerful and dangerous clan and are constantly on the run.",
+      "powerfulEnemy":"have a powerful enemy who wants you dead at all costs.",
+      "rareArtifact":"possess a rare and valuable artifact that is coveted by many.",
+      "terribleCurse":"are under a terrible curse that cannot be lifted.",
+      "betrayedFriend":"once betrayed a close friend and have been wracked with guilt ever since.",
+      "hauntingVisions":"are plagued by haunting visions of a dark future.",
+      "shadowyPast":"have a shadowy past that is slowly catching up with you.",
+      "vengefulSpirit":"are haunted by a vengeful spirit that will not rest until it gets what it wants.",
+      "survivorOfMassacre":"are the only survivor of a massacre that you cannot forget.",
+      "powerfulAddiction":"have a powerful addiction that is slowly destroying you.",
+      "angeredSpirit":"have angered a powerful spirit that is now out for revenge.",
+      "strangePhenomenon":"are followed by a strange, unexplainable phenomenon that brings chaos and destruction wherever you go.",
+      "huntedByMonster":"are hunted by a terrifying monster that you cannot defeat.",
+      "darkSecret":"are haunted by a dark secret that, if revealed, could destroy everything you hold dear.",
+      "dangerousEnemy":"have made a dangerous enemy of an influential clan.",
+      "dealWithEntity":"have made a deal with a malevolent entity that is slowly taking over your mind and body.",
+      "cursedWithAbility":"are cursed with the ability to see the worst in people and cannot help but voice your thoughts.",
+      "unexplainableNightmares":"are plagued by unexplainable nightmares that are slowly driving you insane.",
+      "insatiableHunger":"are cursed with an insatiable hunger that can never be sated.",
+      "markedByDarkForce":"have been marked by a dark force that will stop at nothing to claim your soul."
+    },
+    "badHabits":{
+      "compulsivelyHoard":"compulsively hoard any small trinkets you come across, often to the detriment of your party.",
+      "cripplingFear":"have a crippling fear of enclosed spaces or the dark.",
+      "urgeToSpeakYourMind":"have an urge to speak your mind, even if it means making enemies or getting into trouble.",
+      "addictedToSubstance":"are addicted to a particular substance and go to great lengths to get your fix.",
+      "habitOfStealing":"have a habit of stealing things, even when it's not beneficial.",
+      "angerManagementIssues":"have anger management issues. Tend to lash out violently.",
+      "chronicInsomnia":"have chronic insomnia.",
+      "extremelyParanoid":"are extremely paranoid. You make up conspiracy theories, even when they have no basis in reality.",
+      "terribleMemory":"have a terrible memory, often forget important details or information.",
+      "persistentProcrastinator":"are a persistent procrastinator.",
+      "obsessedWithCounting":"are obsessed with counting and arranging objects.",
+      "oftenMumble":"often mmumble to yourself, even in public.",
+      "alwaysLosingItems":"are always losing important items.",
+      "needToKeepWeaponsClean":"need to keep your weapons and tools CLEAN.",
+      "tellOverlyLongTales":"tell overly long and irrelevant tales in conversation.",
+      "collectEars":"collect ears to whisper secrets into.",
+      "constantlyFidgeting":"are constantly fidgeting. Just can’t sit still.",
+      "loudNervousSneezes":"have a habit of making loud, nervous sneezes.",
+      "hateBeingTouched":"hate being touched.",
+      "cannotHelpButStealFood":"cannot help but steal food from everyone then hoard it."
+    },
+    "awfulAfflictions":{
+      "paranoid":"Paranoid.",
+      "sadistic":"Sadistic.",
+      "narcissistic":"Narcissistic.",
+      "compulsiveLiar":"Compulsive liar.",
+      "selfDestructive":"Self-destructive.",
+      "envious":"Envious.",
+      "antisocial":"Antisocial.",
+      "addicted":"Addicted.",
+      "shortTempered":"Short-tempered.",
+      "greedy":"Greedy.",
+      "pessimistic":"Pessimistic.",
+      "manipulative":"Manipulative.",
+      "careless":"Careless.",
+      "aggressive":"Aggressive.",
+      "insecure":"Insecure.",
+      "hedonistic":"Hedonistic.",
+      "fanatical":"Fanatical.",
+      "hypocritical":"Hypocritical.",
+      "unreliable":"Unreliable.",
+      "delusional":"Delusional."
+    },
+    "classFeatures":{
+      "forgottenRonin":{
+        "weapons":{
+          "wornKatana":{
+            "name":"Worn katana"
+          }
+        },
+        "startingEquipment":{
+          "travelingClothes":"Traveling clothes",
+          "strawHat":"Straw hat"
+        },
+        "features":{
+          "roninsResolve":{
+            "title":"Ronin’s Resolve",
+            "description":"The Forgotten Ronin can draw upon their inner strength and resolve in times of great need. Once per day, they may roll d6 and add the result to any one roll they make."
+          },
+          "swordMaster":{
+            "title":"Sword Master",
+            "description":"A master of the blade, wielding their sword with deadly precision. They may add their Vigor modifier to damage rolls made with melee weapons."
+          },
+          "masterless":{
+            "title":"Masterless",
+            "description":"If the Forgotten Ronin’s honour score is below 10 they may Parry at DR12."
+          },
+          "bushisBlade":{
+            "title":"Bushi's Blade",
+            "description":"When both the Rōnin and an enemy are wielding a Katana or Wakizashi the attack and defence DR is lowered by 2."
+          },
+          "protector":{
+            "title":"Protector",
+            "description":"The Forgotten Ronin is fiercely protective of their allies and will go to great lengths to defend them. Once per combat, they may protect an ally, adding +2 to their defence against all attacks until the end of the Ronin’s next turn."
+          },
+          "hauntedBlade":{
+            "title":"Haunted Blade",
+            "description":"Once per combat, make a sacrifice to the blade; anything from losing d4 HP to discarding an important item. On the next attack with the blade, roll twice and take the higher roll, the strike deals an extra d8 damage. After the strike, the blade attacks a random target including the Ronin and allies, until the end of the Ronin’s next turn."
+          }
+        },
+        "honourTenets":{
+          "title":"The Ronin’s Creed",
+          "tenetsList":[
+            "Resilience",
+            "Freedom",
+            "Personal Mastery",
+            "Empathy",
+            "Discipline",
+            "Dignity"
+          ]
+        }
+      },
+      "eruditeSamurai":{
+        "weapons":{
+          "fineKatana":{
+            "name":"Fine Katana"
+          },
+          "wakizashi":{
+            "name":"Wakizashi"
+          }
+        },
+        "startingEquipment":{
+          "collectionOfBooks":"Collection of books and papers"
+        },
+        "features":{
+          "scholarlyTraining":{
+            "title":"Scholarly Training",
+            "description":"The Erudite Samurai has received extensive training in the arts of literature, philosophy, and the sciences. If in honourable standing (above 10 Honour) they may add +4 to a damage roll once per day."
+          },
+          "philosophyOfWar":{
+            "title":"Philosophy of War",
+            "description":"Once per combat, predict the next move of the enemy and gain a +2 bonus to an roll against that opponent. This ability can only be used if they have had at least one round to observe their opponent's fighting style."
+          },
+          "tacticalGenius":{
+            "title":"Tactical Genius",
+            "description":" A master of strategy and tactics. They may use their honour score if in honourable standing (Honour 10 or above) to gain an advantage in combat, reducing the DR of a parry to DR12."
+          },
+          "preciseStrike":{
+            "title":"Precise Strike",
+            "description":"Trained to strike with precision, finding the weaknesses in their opponents' defences. Once per combat encounter, they may add a bonus to their attack roll equal to their Vigor modifier."
+          },
+          "intimidatingPresence":{
+            "title":"Intimidating Presence",
+            "description":"Knowledge and training make them a formidable opponent. Once per day, they can intimidate their enemies, lowering the DR of their next attack by 4."
+          },
+          "zenFocus":{
+            "title":"Zen Focus",
+            "description":"Once per day, they can enter a state of zen-like focus, granting them a +1 bonus to all ability rolls for a duration of 10 minutes."
+          }
+        },
+        "honourTenets":{
+          "title":"Bushido",
+          "tenetsList":[
+            "Courage",
+            "Honesty",
+            "Honour",
+            "Loyalty",
+            "Self-Control",
+            "Self-Sacrifice"
+          ]
+        }
+      },
+      "drunkenMonk":{
+        "weapons":{
+          "brassKnuckles":{
+            "name":"Brass knuckles"
+          }
+        },
+        "startingEquipment":{
+          "monksRobesAndSandals":"Monk's robes and sandals",
+          "gourdOfSake":"Gourd of sake d4 uses"
+        },
+        "features":{
+          "drunkenFist":{
+            "title":"Drunken Fist",
+            "description":"The Drunken Monk fights with an unpredictable, fluid style that confounds opponents. They may add their Spirit modifier when making unarmed attacks."
+          },
+          "fiveFingerDeathPunch":{
+            "title":"Five Finger Death Punch",
+            "description":"Once per session, choose to strike an opponent with a precision unarmed attack that targets pressure points, dealing an additional 6d4 on a success and stunning the target."
+          },
+          "roadhouse":{
+            "title":"Roadhouse",
+            "description":"Make a brutal attack against an opponent's throat potentially killing them outright. Before making an attack, Test Spirit DR14. The attack requires the monk to make a successful attack and may only be used on a surprised opponent."
+          },
+          "flameFist":{
+            "title":"Flame Fist",
+            "description":"Knuckles imbued with mystical fire, dealing 1d4 additional fire damage and potentially setting targets on fire. The Monk may only use this ability a limited number of times per day (Spirit +1)."
+          },
+          "sakeStyle":{
+            "title":"Sake Style",
+            "description":"When the Drunken Monk is under the effects of alcohol, they gain a temporary +2 bonus to their melee attacks and defence."
+          },
+          "drunkenMaster":{
+            "title":"Drunken Master",
+            "description":"Turn any item into a weapon, increasing the damage from a d4 to d6. Additionally, they have a +1 bonus to initiative rolls while drunk."
+          }
+        },
+        "honourTenets":{
+          "title":"Noble Truths",
+          "tenetsList":[
+            "Simplicity",
+            "Harmony",
+            "Compassion",
+            "Perseverance",
+            "Serenity",
+            "Honesty"
+          ]
+        }
+      },
+      "corruptedShinobi":{
+        "weapons":{
+          "pairOfKusarigama":{
+            "name":"Pair of kusarigama",
+            "amount":"(melee/ranged)"
+          },
+          "shuriken":{
+            "name":"Shuriken",
+            "amount":"(x10)"
+          }
+        },
+        "startingEquipment":{
+          "darkClothing":"Dark, unremarkable clothing",
+          "vialOfPoison":"Small vial of poison d6 uses, d4 damage for d4 rounds"
+        },
+        "features":{
+          "corruptedTechniques":{
+            "title":"Corrupted Techniques",
+            "description":"Various forbidden techniques that allow manipulation of shadows and infliction of horrific curses. Once per day, they can choose one of the following effects: create a pool of darkness to hide in or curse an enemy to take ongoing damage (d4 per round)."
+          },
+          "poisonMaster":{
+            "title":"Poison Master",
+            "description":"An expert in crafting and applying deadly poisons. They can create one dose of poison during a short rest. Poisons created this way deal an additional d4 damage."
+          },
+          "smokeScreen":{
+            "title":"Smoke Screen",
+            "description":"Once per day, the shinobi can create a dense cloud of smoke that provides cover and obscures vision. The smoke lasts for d6 rounds."
+          },
+          "betrayersBlade":{
+            "title":"Betrayer's Blade",
+            "description":"The Corrupted Shinobi carries a blade that is infused with dark magic and has the ability to absorb the life force of their enemies. Once per day, they can use this ability to deal an additional d8 damage and heal themselves for the same amount."
+          },
+          "shadowStep":{
+            "title":"Shadow Step",
+            "description":"Teleport a short distance by stepping into the shadows. They can use this ability to teleport to a nearby shadowy area. The Shinobi may only use this ability a limited number of times per day (Swiftness +1)."
+          },
+          "darkIllusion":{
+            "title":"Dark Illusion",
+            "description":"Once per combat, they can create an illusory double of themselves, causing enemies to attack the wrong target. When the Shinobi is hit, roll a d6; on an even number the enemy hits the Shinobi, on an odd number it hits the illusion causing it to disappear."
+          }
+        },
+        "honourTenets":{
+          "title":"The Unseen Virtues",
+          "tenetsList":[
+            "Deception",
+            "Ruthlessness",
+            "Loyalty",
+            "Discretion",
+            "Adaptability",
+            "Perseverance"
+          ]
+        }
+      },
+      "onmyoji":{
+        "weapons":{
+          "kiseru":{
+            "name":"Kiseru"
+          }
+        },
+        "startingEquipment":{
+          "robesAndTalismans":"Robes and talismans"
+        },
+        "features":{
+          "diviningRod":{
+            "title":"Divining Rod",
+            "description":"A rod carved from a sacred tree that vibrates and hums when danger is near. When in use, the rod will point in the direction of any nearby threats. Once per day, the Onmyoji can ask the rod a yes or no question and receive a clear answer."
+          },
+          "ofudaTalisman":{
+            "title":"Ofuda Talisman",
+            "description":"A sheet of paper inscribed with protective symbols that can be used to ward off evil spirits or curses. The talisman can be used once per day to protect against a single supernatural attack or effect. Test Spirit DR12 to activate the talisman and negate the effect."
+          },
+          "spiritBeacon":{
+            "title":"Spirit Beacon",
+            "description":"Once per day, create a glowing beacon that draws enemies towards it. Test Spirit DR12. On a success, all enemies in the area are drawn to the beacon, distracting them from attacking the Onmyoji. On a fail, the beacon attracts all enemies to the Onmyoji. The beacon lasts for d6 rounds."
+          },
+          "shadowBinding":{
+            "title":"Shadow Binding",
+            "description":"Attempt to bind an enemy to its shadow, rendering them immobile. To use this ability, Test Spirit DR12. On a success, the enemy is unable to move until the end of the Onmyoji's next turn. The Onmyoji may only use this ability a limited number of times per day (Spirit +1)."
+          },
+          "textOfExorcism":{
+            "title":"Text of Exorcism",
+            "description":"A text containing powerful incantations and symbols that can be used to banish evil spirits or demons. Once per day, the Onmyoji must Test Spirit DR14 to activate the text, which can banish a single spirit or demon (cannot be used in Yomi)."
+          },
+          "mirrorOfReflection":{
+            "title":"Mirror of Reflection",
+            "description":"A handheld mirror inscribed with runes that can be used to reflect hostile spells or attacks. Once per day, Test Spirit DR12 to use the mirror, reflecting any spell or attack directed at them. This deals the attack’s damage back to the attacker."
+          }
+        },
+        "honourTenets":{
+          "title":"The Rules of the Divine",
+          "tenetsList":[
+            "Respect for Nature",
+            "Balance",
+            "Wisdom",
+            "Compassion",
+            "Patience",
+            "Perseverance"
+          ]
+        }
+      },
+      "bakuto":{
+        "weapons":{
+          "tanto":{
+            "name":"Tanto"
+          }
+        },
+        "startingEquipment":{
+          "stylishClothing":"Stylish, flamboyant clothing",
+          "loadedDice":"Loaded dice and marked cards"
+        },
+        "features":{
+          "gamblingLuck":{
+            "title":"Gambling Luck",
+            "description":"Bakuto can sense when a game is rigged, or someone is cheating. They get +2 to Spirit tests when gambling or playing games of chance. They can also re-roll any one roll, once per day."
+          },
+          "suckerPunch":{
+            "title":"Sucker Punch",
+            "description":"Take a swing before they know what hit ‘em. Deal double damage with their first strike in a round."
+          },
+          "dirtyTricks":{
+            "title":"Dirty Tricks",
+            "description":"Pull a fast one to gain the advantage. Once per combat, add +2 to any attack or defence roll by using deception, trickery or surprise."
+          },
+          "sleightOfHand":{
+            "title":"Sleight of Hand",
+            "description":"The art of pickpocketing, intimidation, and thievery. They get +4 to Spirit tests when attempting these actions."
+          },
+          "doubleStrike":{
+            "title":"Double Strike",
+            "description":"A master of dual wielding. Make two melee attacks in a single turn, but each attack suffers a -2 penalty to the attack roll."
+          },
+          "feint":{
+            "title":"Feint",
+            "description":"Choose to forgo their attack on their turn and instead Test Spirit DR10. If successful, the Bakuto gains a +4 to their next attack also dealing +4 damage."
+          }
+        },
+        "honourTenets":{
+          "title":"The Gambler’s Way",
+          "tenetsList":[
+            "Honour Among Thieves",
+            "Resourcefulness",
+            "Bravery",
+            "Self-Reliance",
+            "Camaraderie",
+            "Adaptability"
+          ]
+        }
+      },
+      "yamabushi":{
+        "weapons":{
+          "boStaff":{
+            "name":"Bo Staff"
+          }
+        },
+        "startingEquipment":{
+          "robesAndSash":"Robes and sash adorned with pom-poms"
+        },
+        "features":{
+          "mountainsResolve":{
+            "title":"Mountain's Resolve",
+            "description":"Once per day, draw upon the spiritual energy of the mountains to gain a +4 bonus to a roll."
+          },
+          "spiritualMartialArts":{
+            "title":"Spiritual Martial Arts",
+            "description":"Trained in a unique form of martial arts that channels spiritual energy. Once per combat, add their Spirit modifier to an attack or defence roll."
+          },
+          "mountainsFury":{
+            "title":"Mountain's Fury",
+            "description":"Once per combat, channel the wrath of the mountains into a powerful strike, dealing an additional d6 damage."
+          },
+          "asceticsWisdom":{
+            "title":"Ascetic's Wisdom",
+            "description":"Years of solitude have given deep insight. Once per day, may reroll a failed Spirit test."
+          },
+          "divineGuidance":{
+            "title":"Divine Guidance",
+            "description":"Call upon the spirits for guidance and protection. Once per day, perform a ritual to seek divine guidance, granting a temporary +2 bonus to one ability for the next hour."
+          },
+          "mysticsShield":{
+            "title":"Mystic's Shield",
+            "description":"Once per day, use spiritual energy to shield from harm, reducing the damage of an incoming attack to zero."
+          }
+        },
+        "honourTenets":{
+          "title":"The Yamabushi’s Path",
+          "tenetsList":[
+            "Enlightenment",
+            "Harmony",
+            "Healing",
+            "Exorcism",
+            "Discipline",
+            "Tradition"
+          ]
+        }
+      },
+      "wildDancer":{
+        "weapons":{
+          "katana":{
+            "name":"Katana"
+          },
+          "tanegashima":{
+            "name":"Tanegashima",
+            "amount":"(Spirit+5 bullets)"
+          }
+        },
+        "startingEquipment":{
+          "flashyKimono":"Flashy, decorative kimono"
+        },
+        "features":{
+          "untamedFerocity":{
+            "title":"Untamed Ferocity",
+            "description":"Once per combat, enter a state of untamed ferocity for rounds equal to Vigor modifier. +1 bonus to attack/defence, matchlock pistol deals additional d4 damage. No Parry ability during this state."
+          },
+          "twoWeaponFighting":{
+            "title":"Two-Weapon Fighting",
+            "description":"Skilled in fighting with a weapon in each hand. Once per day, attack twice in a round with both gun and katana."
+          },
+          "dancingDefence":{
+            "title":"Dancing Defence",
+            "description":"Use graceful movements to dodge attacks. Once per day, dodge an attack that would have hit."
+          },
+          "shootingStar":{
+            "title":"Shooting Star",
+            "description":"Once per combat, perform a flashy attack with the pistol, reducing DR to attack that enemy by 4 for the next round."
+          },
+          "swordDance":{
+            "title":"Sword Dance",
+            "description":"Once per day, unleash a flurry of sword strikes, dealing an extra 2d6 damage."
+          },
+          "wildSpirit":{
+            "title":"Wild Spirit",
+            "description":"Unpredictable nature makes it hard for enemies to anticipate actions. Once per combat, reroll a failed attack or defence roll."
+          }
+        },
+        "honourTenets":{
+          "title":"The Dancer’s Code",
+          "tenetsList":[
+            "Expression",
+            "Rhythm",
+            "Passion",
+            "Grace",
+            "Courage",
+            "Innovation"
+          ]
+        }
+      },
+      "recklessSumo":{
+        "weapons":{
+          "handChalk":{
+            "name":"Hand chalk"
+          }
+        },
+        "startingEquipment":{
+          "traditionalSumoClothing":"Traditional Sumo clothing"
+        },
+        "features":{
+          "ironBody":{
+            "title":"Iron Body",
+            "description":"A Sumo’s body is like a fortress. Once per day, they may shrug off an attack that would have damaged them."
+          },
+          "sumoSlam":{
+            "title":"Sumo Slam",
+            "description":"Uses superior strength and mass to deliver a powerful slam attack. Once per combat, add twice Vigor modifier to a melee attack roll."
+          },
+          "mountainsGrasp":{
+            "title":"Mountain's Grasp",
+            "description":"Roll 2d6+Vigor. If higher than target's morale, they are grappled, unable to attack/move until start of Sumo’s next turn. Ends early if Sumo moved or unconscious."
+          },
+          "ringOut":{
+            "title":"Ring Out",
+            "description":"Once per combat, push an enemy out of the immediate combat zone, stopping them from melee attacks for a round."
+          },
+          "chankoPower":{
+            "title":"Chanko Power",
+            "description":"Incredible strength from diet of chanko nabe. Once per day, tap into this power for a +6 on any Vigor test."
+          },
+          "bellyBump":{
+            "title":"Belly Bump",
+            "description":"Use girth to bump an opponent, potentially knocking them off balance. Next round, attacks against this enemy are made at +4."
+          }
+        },
+        "honourTenets":{
+          "title":"The Sumo’s Oath",
+          "tenetsList":[
+            "Endurance",
+            "Strength",
+            "Patience",
+            "Respect",
+            "Discipline",
+            "Tradition"
+          ]
+        },
+        "foodConsumption":"The Sumo consumes 2 Food when resting instead of 1"
+      },
+      "swordSaint":{
+        "weapons":{
+          "odachi":{
+            "name":"Odachi"
+          }
+        },
+        "startingEquipment":{
+          "emptyHanded":"Empty-handed"
+        },
+        "features":{
+          "artfulExecution":{
+            "title":"Artful Execution",
+            "description":"Master of weapon, capable of precision strikes, ignoring opponent's armour or defences once per combat."
+          },
+          "unyieldingFocus":{
+            "title":"Unyielding Focus",
+            "description":"Heightened concentration in battle, reducing all incoming damage by half for one round, once per combat."
+          },
+          "bladesSpirit":{
+            "title":"Blade's Spirit",
+            "description":"Once per session, pour spirit into a strike, adding Honour score to the damage roll."
+          },
+          "ancestralWeapon":{
+            "title":"Ancestral Weapon",
+            "description":"Weapon passed down through generations. Once per day, call upon ancestral spirits for a reroll on attack roll."
+          },
+          "harmonicDuel":{
+            "title":"Harmonic Duel",
+            "description":"Predict opponent's move in a duel, gaining advantage on next attack, defence, or riposte, once per duel."
+          },
+          "unyieldingDiscipline":{
+            "title":"Unyielding Discipline",
+            "description":"Intimidate enemies, lowering DR of next attack by -4, once per day."
+          }
+        },
+        "honourTenets":{
+          "title":"The Sword Saint’s Discipline",
+          "tenetsList":[
+            "Precision",
+            "Mastery",
+            "Discipline",
+            "Valour",
+            "Respect",
+            "Legacy"
+          ]
+        }
+      }
+    },
+    "armors":{
+      "noArmour":{
+        "style":"No Armour",
+        "description":"Leaves you vulnerable to all attacks. Good luck…"
+      },
+      "ashigaruArmour":{
+        "style":"Ashigaru Armour",
+        "description":"Light Armour with moderate protection. Reduces damage taken by -d2."
+      },
+      "kendoArmour":{
+        "style":"Kendo Armour",
+        "description":"Light Armour, cloth and padded. Reduces damage taken by -d2."
+      },
+      "doMaru":{
+        "style":"Do-maru",
+        "description":"Medium Armour, iron or leather plates. Reduces damage taken by -d4, +2 DR penalty on Swiftness."
+      },
+      "kusariArmour":{
+        "style":"Kusari Armour",
+        "description":"Medium Armour, interlocking metal rings. Reduces damage taken by -d4, +2 DR penalty on Swiftness."
+      },
+      "oYoroi":{
+        "style":"O-yoroi",
+        "description":"Heavy Armour, iron plates and chainmail. Reduces damage taken by -d6, +4 DR penalty on Swiftness."
+      },
+      "haramaki":{
+        "style":"Haramaki",
+        "description":"Heavy Armour, leather and iron plates. Reduces damage taken by -d6, +4 DR penalty on Swiftness."
+      }
+    },
+    "equipment":{
+      "food":"Food",
+      "water":"Water"
+    }
+  }
+}

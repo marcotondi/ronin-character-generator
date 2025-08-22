@@ -1,34 +1,52 @@
 import {
-    classes,
     firstNames,
     lastNames,
-    nickNames,
-    carryMap,
-    equipmentMap,
-    startingWeaponsMap,
-    unseenTextsMap,
-    shintaiTextsMap,
-    brokenBodiesMap,
-    grimChroniclesMap,
-    badHabitsMap,
-    awfulAfflictionsMap,
-    classFeatures,
 } from './constants';
+import {
+    getClasses,
+    getNickNames,
+    getCarryMap,
+    getEquipmentMap,
+    getStartingWeaponsMap,
+    getUnseenTextsMap,
+    getShintaiTextsMap,
+    getBrokenBodiesMap,
+    getGrimChroniclesMap,
+    getBadHabitsMap,
+    getAwfulAfflictionsMap,
+    getClassFeatures,
+} from './i18n';
 import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor } from './types';
 import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment } from './utils';
 
+type Translator = (key: string, params?: any) => string;
+
 function rollForStartingWeapon(): Weapon | undefined {
+    const startingWeaponsMap = getStartingWeaponsMap();
     const weaponRoll = rollDice(1, startingWeaponsMap.size);
     return startingWeaponsMap.get(weaponRoll);
 }
 
-export function generateCharacter(): Character {
+export function generateCharacter(t: Translator): Character {
+    const classes = getClasses();
+    const nickNames = getNickNames();
+    const carryMap = getCarryMap();
+    const equipmentMap = getEquipmentMap();
+    const unseenTextsMap = getUnseenTextsMap();
+    const shintaiTextsMap = getShintaiTextsMap();
+    const brokenBodiesMap = getBrokenBodiesMap();
+    const grimChroniclesMap = getGrimChroniclesMap();
+    const badHabitsMap = getBadHabitsMap();
+    const awfulAfflictionsMap = getAwfulAfflictionsMap();
+    const classFeatures = getClassFeatures(t);
+
     const selectedClass = getRandomItem(classes);
     const classMods = classFeatures[selectedClass].modifiers;
     console.log("Selected class:", selectedClass);
     const firstName = getRandomItem(firstNames);
     const lastName = getRandomItem(lastNames);
     const nickName = getRandomItem(nickNames);
+    nickName.english = t(nickName.english);
 
     const abilities: Abilities = {
         swiftness: getAbilityModifier(rollDice(3, 6) + classMods.swiftness),
@@ -39,26 +57,25 @@ export function generateCharacter(): Character {
     };
 
     const hitPoints = Math.max(1, classFeatures[selectedClass].calculateHitPoints(abilities));
-    const honorStatus = abilities.honour >= 10 ? "Honourable" : "Dishonourable";
-    const equipment = [...classFeatures[selectedClass].startingEquipment];
+    const honorStatus = abilities.honour >= 10 ? 'page.honour' : 'page.dishonour';
+    const equipment = [...classFeatures[selectedClass].startingEquipment.map(key => t(key))];
     const randomCarry = rollForEquipment(carryMap, selectedClass);
-    equipment.push(randomCarry);
+    equipment.push(t(randomCarry));
 
-    // const randomEquipmentRoll = rollDice(1, equipmentMap.size);
     const randomEquipment = rollForEquipment(equipmentMap, selectedClass);
     const texts: (UnseenText | ShintaiText)[] = [];
     const food = rollDice(1, 4);
     const water = rollDice(1, 4);
-    equipment.push(`${food} <strong style='color:#ECCF18;'>Food</strong>`);
-    equipment.push(`${water} <strong style='color:#ECCF18;'>Water</strong>`);
+    equipment.push(`${food} ${t('characterGenerator.equipment.food')}`);
+    equipment.push(`${water} ${t('characterGenerator.equipment.water')}`);
 
-    const hasSpecialEquipment = equipment.includes("<strong style='color:#ECCF18;'>An Unseen Text</strong>") || equipment.includes("A Shintai Text");
+    const hasSpecialEquipment = equipment.includes('characterGenerator.equipmentMap.unseenText') || equipment.includes('characterGenerator.equipmentMap.shintaiText');
     let armor: Armor;
 
-    if (selectedClass === "Erudite Samurai") {
-        armor = { style: "Do-maru", tier: 2, description: "Medium Armour, iron or leather plates. Reduces damage taken by -d4, +2 DR penalty on Swiftness." };
-    } else if (selectedClass === "Sword Saint") {
-        armor = { style: "O-yoroi", tier: 3, description: "Heavy Armour, iron plates and chainmail. Reduces damage taken by -d6, +4 DR penalty on Swiftness." };
+    if (selectedClass === 'characterGenerator.classes.eruditeSamurai') {
+        armor = determineArmorBasedOnRoll(3);
+    } else if (selectedClass === 'characterGenerator.classes.swordSaint') {
+        armor = determineArmorBasedOnRoll(4);
     } else if (hasSpecialEquipment) {
         armor = determineArmorBasedOnRoll(rollDice(1, 2));
     } else {
@@ -109,18 +126,18 @@ export function generateCharacter(): Character {
         character.classWeapons.push(randomStartingWeapon);
     }
 
-    if (randomEquipment === "<strong style='color:#ECCF18;'>An Unseen Text</strong>") {
-        equipment.push("<strong style='color:#ECCF18;'>An Unseen Text</strong>");
+    if (randomEquipment === 'characterGenerator.equipmentMap.unseenText') {
+        equipment.push(t('characterGenerator.equipmentMap.unseenText'));
         const unseenTextKey = rollDice(1, unseenTextsMap.size);
         const unseenText = unseenTextsMap.get(unseenTextKey);
         if (unseenText) {
             character.randomUnseenText = unseenText;
         }
     } else {
-        equipment.push(randomEquipment);
+        equipment.push(t(randomEquipment));
     }
 
-    if (selectedClass === "Yamabushi") {
+    if (selectedClass === 'characterGenerator.classes.yamabushi') {
         const unseenTextRoll = rollDice(1, unseenTextsMap.size);
         const unseenText = unseenTextsMap.get(unseenTextRoll);
         if (unseenText) {
@@ -129,7 +146,7 @@ export function generateCharacter(): Character {
         }
     }
 
-    if (selectedClass === "Onmyoji") {
+    if (selectedClass === 'characterGenerator.classes.onmyoji') {
         const unseenTextKey = rollDice(1, unseenTextsMap.size);
         const shintaiTextKey = rollDice(1, shintaiTextsMap.size);
         const unseenText = unseenTextsMap.get(unseenTextKey);
@@ -144,8 +161,8 @@ export function generateCharacter(): Character {
         }
     }
 
-    if (selectedClass === "Reckless Sumo") {
-        character.classFeatures = { foodConsumption: "Consumes 2 food when resting instead of 1" };
+    if (selectedClass === 'characterGenerator.classes.recklessSumo') {
+        character.classFeatures = { foodConsumption: classFeatures[selectedClass].foodConsumption! };
     }
 
     console.log("Generated Abilities:", abilities);

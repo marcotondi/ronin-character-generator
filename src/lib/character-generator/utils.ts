@@ -1,4 +1,7 @@
 import { Armor } from "./types";
+import { getArmorsByRoll } from "./i18n-armor";
+
+type Translator = (key: string) => string;
 
 let honourState: "honourable" | "dishonourable" | "none" = "none";
 
@@ -38,21 +41,7 @@ export function toggleHonourState(state: "honourable" | "dishonourable"): void {
 }
 
 export function determineArmorBasedOnRoll(roll: number): Armor {
-    const armorsByRoll: { [key: number]: Armor[] } = {
-        1: [{ style: "No Armour", tier: 0, description: "Leaves you vulnerable to all attacks. Good luck…" }],
-        2: [
-            { style: "Ashigaru Armour", tier: 1, description: "Light Armour with moderate protection. Reduces damage taken by -d2." },
-            { style: "Kendo Armour", tier: 1, description: "Light Armour, cloth and padded. Reduces damage taken by -d2." },
-        ],
-        3: [
-            { style: "Do-maru", tier: 2, description: "Medium Armour, iron or leather plates. Reduces damage taken by -d4, +2 DR penalty on Swiftness." },
-            { style: "Kusari Armour", tier: 2, description: "Medium Armour, interlocking metal rings. Reduces damage taken by -d4, +2 DR penalty on Swiftness." },
-        ],
-        4: [
-            { style: "O-yoroi", tier: 3, description: "Heavy Armour, iron plates and chainmail. Reduces damage taken by -d6, +4 DR penalty on Swiftness." },
-            { style: "Haramaki", tier: 3, description: "Heavy Armour, leather and iron plates. Reduces damage taken by -d6, +4 DR penalty on Swiftness." },
-        ],
-    };
+    const armorsByRoll = getArmorsByRoll();
     const tierArmors = armorsByRoll[roll];
     if (tierArmors) {
         return tierArmors[Math.floor(Math.random() * tierArmors.length)];
@@ -61,16 +50,16 @@ export function determineArmorBasedOnRoll(roll: number): Armor {
     return armorsByRoll[1][0];
 }
 
-export function rollForEquipment(equipmentMap2: Map<number, string>, selectedClass: string): string {
+export function rollForEquipment(equipmentMap: Map<number, string>, selectedClass: string): string {
     let roll: number;
     let equipment: string | undefined;
     do {
-        roll = rollDice(1, equipmentMap2.size);
-        equipment = equipmentMap2.get(roll);
-        if (equipment === "4 <strong style='color:#ECCF18;'>Firecrackers</strong>" || equipment === "4 <strong style='color:#ECCF18;'>Healers Kits</strong>" || equipment === "4 <strong style='color:#ECCF18;'>Snake venom shuriken</strong>") {
+        roll = rollDice(1, equipmentMap.size);
+        equipment = equipmentMap.get(roll);
+        if (equipment === 'characterGenerator.equipmentMap.firecrackers' || equipment === 'characterGenerator.equipmentMap.healersKits' || equipment === 'characterGenerator.equipmentMap.snakeVenomShuriken') {
             const quantity = rollDice(1, 4);
             equipment = equipment.replace("4", quantity.toString());
         }
-    } while ((selectedClass === "Onmyoji" || selectedClass === "Yamabushi") && equipment === "An Unseen Text");
+    } while ((selectedClass === 'characterGenerator.classes.onmyoji' || selectedClass === 'characterGenerator.classes.yamabushi') && equipment === 'characterGenerator.equipmentMap.unseenText');
     return equipment || "";
 }
