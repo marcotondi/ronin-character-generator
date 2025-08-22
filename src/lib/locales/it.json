@@ -1,14 +1,14 @@
 {
   "page":{
     "title":"GENERA IL TUO PG",
-    "lastWarrior":"Sei morto con...",
+    "lastWarrior":"Il tuo ultimo guerriero è morto con...",
     "honour":"Onore",
     "dishonour":"Disonore",
-    "click":"CLICCA",
-    "forNew":"PER UN NUOVO",
-    "warrior":"PG",
+    "click":"GENERA",
+    "forNew":"UN NUOVO",
+    "warrior":"GUERRIERO",
     "youAre":"Tu sei...",
-    "the":"... il ...",
+    "the":"... il...",
     "hp":"PF",
     "virtues":"Virtù",
     "honor":"Onore",
@@ -18,37 +18,37 @@
     "swiftness":"Rapidità",
     "spirit":"Spirito",
     "vigor":"Vigore",
-    "resilience":"Resilienza",
+    "resilience":"Resistenza",
     "youMustFollow":"Devi seguire...",
     "weapons":"ARMI",
     "armour":"ARMATURA",
-    "tier":"Livello",
+    "tier":"Rango",
     "equipment":"Equipaggiamento",
     "feature":"Caratteristica",
-    "unseenText":"Testo Invisibile",
+    "unseenText":"Testo Himistu",
     "shintaiText":"Testo Shintai",
     "download":"Scarica Scheda Personaggio"
   },
   "characterGenerator":{
     "classes":{
-      "forgottenRonin":"Ronin Dimenticato",
-      "eruditeSamurai":"Samurai Erudito",
+      "forgottenRōnin":"Rōnin Dimenticato",
+      "eruditeSamurai":"Saggio Samurai",
       "drunkenMonk":"Monaco Ubriaco",
       "corruptedShinobi":"Shinobi Corrotto",
       "onmyoji":"Onmyoji",
       "bakuto":"Bakuto",
       "yamabushi":"Yamabushi",
       "wildDancer":"Danzatore Selvaggio",
-      "recklessSumo":"Sumo Temerario",
+      "recklessSumo":"Lottatore Sumo",
       "swordSaint":"Santo della Spada"
     },
     "nickNames":{
       "hawkEye":"Occhio di Falco",
-      "dragonOfTheSea":"Drago del Mare",
+      "GDagonOfTheSea":"GDago del Mare",
       "thunderFang":"Zanna del Tuono",
       "riverGod":"Dio del Fiume",
       "mountainWind":"Vento della Montagna",
-      "swordSaintOfTheWind":"Santo della Spada del Vento",
+      "swordSaintOfTheWind":"Maestro del Vento",
       "demonOfTheFog":"Demone della Nebbia",
       "tigerOfHell":"Tigre dell'Inferno",
       "foxOfTheNight":"Volpe della Notte",
@@ -56,7 +56,7 @@
       "tigerDemon":"Demone Tigre",
       "catsPaw":"Zampa di Gatto",
       "windTengu":"Tengu del Vento",
-      "manSlayer":"Uccisore di Uomini",
+      "manSlayer":"Sventrauomini",
       "knightOfDarkness":"Cavaliere delle Tenebre",
       "monsterBoss":"Capo dei Mostri",
       "flowerGeisha":"Geisha dei Fiori",
@@ -65,25 +65,25 @@
       "blackShadow":"Ombra Nera"
     },
     "carryMap":{
-      "emptyHanded":"A mani vuote",
-      "backpack":"Zaino fino a 7 piccoli oggetti",
-      "sack":"Sacco fino a 10 piccoli oggetti",
-      "smallWagon":"Piccolo carro",
-      "trustyPackAnimal":"Fidata bestia da soma"
+      "emptyHanded":"mani vuote",
+      "backpack":"uno zaino che può contenere 7 oggetti piccoli",
+      "sack":"una sacca che può contenere 10 oggetti piccoli",
+      "smallWagon":"un piccolo carro",
+      "trustyPackAnimal":"un fidato animale da soma"
     },
     "equipmentMap":{
-      "rope":"Corda 30 m",
-      "torches":"5 Torce",
-      "lantern":"Lanterna con olio per 6 ore",
-      "magnesiumStrip":"Striscia di magnesio",
-      "unseenText":"Un Testo Invisibile",
-      "firecrackers":"4 Petardi",
-      "healersKits":"4 Kit da guaritore",
-      "metalFileAndLockpicks":"Lima e grimaldelli",
-      "bearTrap":"Trappola per orsi Spirito DR14 per individuarla, d8 danni",
-      "blackPowderBomb":"Bomba a polvere nera d10 danni",
-      "snakeVenomShuriken":"4 Shuriken al veleno di serpente Resilienza DR12 o d8 danni",
-      "silverTalisman":"Talismano d'argento difesa DR contro yokai DR10"
+      "rope":"corda 9 m",
+      "torches":"torce (Spirito+4 torce)",
+      "lantern":"lanterna con olio dura Spirito+6 ore",
+      "magnesiumStrip":"pietra focaia",
+      "unseenText":"un Testo Himitsu",
+      "firecrackers":"fuochi 'd'artificio (Spirito+4 usi)",
+      "healersKits":"borsa da guaritore (Spirito+4 usi). Cura 1d6 PF e ferma sanguinamenti/infezioni",
+      "metalFileAndLockpicks":"lima e grimaldelli",
+      "bearTrap":"tagliola (Spirito CD14 per individuarla, 1d8 danni)",
+      "blackPowderBomb":"bomba a polvere nera (1d10 danni)",
+      "snakeVenomShuriken":"shuriken avvelenati (1d4 shuriken, Resilienza GD12 o 1d8 danni)",
+      "silverTalisman":"Amuleto d'argento (difesa contro gli yokai GD10)"
     },
     "startingWeapons":{
       "shuriken":{
@@ -95,7 +95,7 @@
       },
       "yumi":{
         "name":"Yumi",
-        "amount":"(Spirito+10 frecce)"
+        "amount":"(Spirito+10 di frecce)"
       },
       "boStaff":{
         "name":"Bastone Bo"
@@ -105,7 +105,7 @@
       },
       "kusarigama":{
         "name":"Kusarigama",
-        "amount":"(mischia/distanza)"
+        "amount":"(mischia/a distanza)"
       },
       "wakizashi":{
         "name":"Wakizashi"
@@ -115,7 +115,7 @@
       },
       "tanegashima":{
         "name":"Tanegashima",
-        "amount":"(Spirito+5 proiettili)"
+        "amount":"(Spirito+5 di proiettili)"
       },
       "katana":{
         "name":"Katana"
@@ -123,82 +123,82 @@
     },
     "unseenTexts":{
       "whirlwindBlade":{
-        "title":"Lama del Turbine",
-        "description":"Scatena una raffica (d4) di colpi d'aria contro un singolo nemico, infliggendo d6 danni per colpo."
+        "title":"Vortice Lama",
+        "description":"Scatena una raffica (1d4) di colpi di vento contro un singolo nemico, infliggendo 1d6 danni per colpo."
       },
       "soothingBreeze":{
-        "title":"Brezza Lenitiva",
-        "description":"Cura d6 PF a te stesso o a un alleato."
+        "title":"Brezza Rilassante",
+        "description":"Cura 1d6 PF a te o a un alleato."
       },
       "thunderingRoar":{
-        "title":"Ruggito Tonante",
+        "title":"Boato Assordante",
         "description":"Stordisce un singolo nemico per 1 round."
       },
       "eagleEye":{
-        "title":"Occhio d'Aquila",
-        "description":"Ottieni +4 per colpire per il tuo prossimo attacco."
+        "title":"Artiglio d'Aquila",
+        "description":"Ottieni +4 per colpire per al tuo prossimo attacco."
       },
       "shadowStep":{
         "title":"Passo d'Ombra",
-        "description":"Muoviti istantaneamente in qualsiasi luogo visibile."
+        "description":"Ti sposti istantaneamente in qualsiasi luogo visibile."
       },
       "burningBlade":{
-        "title":"Lama Infuocata",
-        "description":"Incendia la tua arma, infliggendo d4 danni extra a ogni colpo per d6 round."
+        "title":"Lama Fiammeggiante",
+        "description":"La tua arma si incendia infliggendo 1d4 danni aggiuntivi a ogni colpo per 1d6 round."
       },
       "steelBarrier":{
         "title":"Barriera d'Acciaio",
-        "description":"Ottieni +2 alle prove di Rapidità per la difesa per d6 round."
+        "description":"Ottieni +2 alle Prove di Rapidità per la difesa per 1d6 round."
       },
       "spectralGuardian":{
         "title":"Guardiano Spettrale",
-        "description":"Evoca un ronin scheletrico che combatta al tuo fianco per d6 round."
+        "description":"Evoca un Rōnin scheletrico che combatta al tuo fianco per 1d6 round."
       },
-      "soulDrain":{
-        "title":"Risucchio d'Anima",
-        "description":"Infliggi d8 danni e guadagna altrettanti PF (puoi superare i PF massimi)."
+      "soulGDain":{
+        "title":"Risucchia Anima",
+        "description":"Infliggi 1d8 danni e ottieni altrettanti PF (non puoi superare i tuoi PF massimi)."
       },
       "voidBlast":{
         "title":"Esplosione del Vuoto",
-        "description":"Scatena un'esplosione di energia negativa che infligge d8 danni a tutti i nemici che puoi vedere."
+        "description":"Scatena un'esplosione di energia negativa che infligge 1d8 danni a tutti i nemici che puoi vedere."
       }
     },
     "shintaiTexts":{
       "blessingOfTheGods":{
-        "title":"Benedizione degli Dei",
-        "description":"Ripristina d10 PF a d2 creature."
+        "title":"Benedizione Divina",
+        "description":"Ripristina 1d10 PF a 1d2 creature."
       },
       "graceOfRedemption":{
         "title":"Grazia della Redenzione",
-        "description":"Una creatura a tua scelta ottiene +d6 a un tiro."
+        "description":"Una creatura a tua scelta ottiene +1d6 a una Prova."
       },
       "speakWithTheDeparted":{
         "title":"Parlare con i Defunti",
-        "description":"Fai tre domande a una creatura deceduta."
+        "description":"Fai tre domande a una creatura trapassata."
       },
       "spiritShield":{
         "title":"Scudo Spirituale",
-        "description":"Una creatura a tua scelta ottiene 2d6 PF extra per d3 round."
+        "description":"Una creatura a tua scelta ottiene 2d6 PF aggiuntivi per 1d3 round."
       },
       "visionsOfTheBeyond":{
         "title":"Visioni dell'Aldilà",
-        "description":"Una creatura, morta da non più di una settimana, viene risvegliata con terribili ricordi."
+        "description":"Una creatura, morta da non oltre una settimana, si risveglia con terrificanti ricordi."
       },
       "bestialCommunion":{
-        "title":"Comunione Bestiale",
-        "description":"Puoi parlare con gli animali per d20 minuti."
+        "title":"Comunione Animale",
+        "description":"Puoi parlare con gli animali per 1d20 minuti."
       },
       "divineIllumination":{
         "title":"Illuminazione Divina",
-        "description":"Luce o oscurità per 3d10 minuti."
+        "description":"Genera Luce o Tenebre per 3d10 minuti."
       },
       "pureInsight":{
-        "title":"Intuizione Pura",
+        "title":"Pura Intuizione",
         "description":"Trovi tutte le trappole sul tuo cammino per 2d10 minuti."
       },
       "holyRetribution":{
-        "title":"Retribuzione Sacra",
-        "description":"d4 creature perdono d8 PF ciascuna."
+        "title":"Punizione Divina",
+        "description":"1d4 creature perdono 1d8 PF ciascuna."
       },
       "wordOfTheGods":{
         "title":"Parola degli Dei",
@@ -294,7 +294,7 @@
       "delusional":"Delirante."
     },
     "classFeatures":{
-      "forgottenRonin":{
+      "forgottenRōnin":{
         "weapons":{
           "wornKatana":{
             "name":"Katana consumata"
@@ -305,9 +305,9 @@
           "strawHat":"Cappello di paglia"
         },
         "features":{
-          "roninsResolve":{
-            "title":"Determinazione del Ronin",
-            "description":"Il Ronin Dimenticato può attingere alla sua forza interiore e alla sua determinazione nei momenti di grande bisogno. Una volta al giorno, può tirare un d6 e aggiungere il risultato a un qualsiasi tiro che effettua."
+          "RōninsResolve":{
+            "title":"La Volontà del Rōnin",
+            "description":"Il Rōnin Dimenticato può attingere alla sua forza interiore e alla sua determinazione nei momenti di grande bisogno. Una volta al giorno, può tirare un 1d6 e aggiungere il risultato a un qualsiasi tiro che effettua."
           },
           "swordMaster":{
             "title":"Maestro di Spada",
@@ -315,27 +315,27 @@
           },
           "masterless":{
             "title":"Senza Padrone",
-            "description":"Se il punteggio di onore del Ronin Dimenticato è inferiore a 10, può Parare a DR12."
+            "description":"Se il punteggio di onore del Rōnin Dimenticato è inferiore a 10, può Parare a GD12."
           },
           "bushisBlade":{
-            "title":"Lama del Bushi",
-            "description":"Quando sia il Rōnin che un nemico brandiscono una Katana or Wakizashi, la DR di attacco e difesa è ridotta di 2."
+            "title":"La Lama del Bushi",
+            "description":"Quando sia il Rōnin che un nemico brandiscono una Katana or Wakizashi, la GD di attacco e difesa è ridotta di 2."
           },
           "protector":{
             "title":"Protettore",
-            "description":"Il Ronin Dimenticato è ferocemente protettivo nei confronti dei suoi alleati e farà di tutto per difenderli. Una volta per combattimento, può proteggere un alleato, aggiungendo +2 alla sua difesa contro tutti gli attacchi fino alla fine del turno successivo del Ronin."
+            "description":"Il Rōnin Dimenticato è ferocemente protettivo nei confronti dei suoi alleati e farà di tutto per difenderli. Una volta per combattimento, può proteggere un alleato, aggiungendo +2 alla sua difesa contro tutti gli attacchi fino alla fine del turno successivo del Rōnin."
           },
           "hauntedBlade":{
-            "title":"Lama Maledetta",
-            "description":"Una volta per combattimento, fai un sacrificio alla lama; qualsiasi cosa, dalla perdita di d4 PF allo scartare un oggetto importante. Al prossimo attacco con la lama, tira due volte e prendi il risultato più alto, il colpo infligge d8 danni extra. Dopo il colpo, la lama attacca un bersaglio casuale, inclusi il Ronin e gli alleati, fino alla fine del turno successivo del Ronin."
+            "title":"La Lama Maledetta",
+            "description":"Una volta per combattimento, fai un sacrificio alla lama; qualsiasi cosa, dalla perdita di 1d4 PF allo scartare un oggetto importante. Al prossimo attacco con la lama, tira due volte e prendi il risultato più alto, il colpo infligge d8 danni extra. Dopo il colpo, la lama attacca un bersaglio casuale, inclusi il Rōnin e gli alleati, fino alla fine del turno successivo del Rōnin."
           }
         },
         "honourTenets":{
-          "title":"Il Credo del Ronin",
+          "title":"Il Credo del Rōnin",
           "tenetsList":[
             "Resilienza",
             "Libertà",
-            "Maestria Personale",
+            "Maestria",
             "Empatia",
             "Disciplina",
             "Dignità"
@@ -352,28 +352,28 @@
           }
         },
         "startingEquipment":{
-          "collectionOfBooks":"Collezione di libri e documenti"
+          "collectionOfBooks":"Raccolta di libri e pergamene"
         },
         "features":{
           "scholarlyTraining":{
-            "title":"Addestramento Accademico",
+            "title":"Formazione Accademico",
             "description":"Il Samurai Erudito ha ricevuto un'ampia formazione nelle arti della letteratura, della filosofia e delle scienze. Se in condizione onorevole (Onore superiore a 10), può aggiungere +4 a un tiro per i danni una volta al giorno."
           },
           "philosophyOfWar":{
-            "title":"Filosofia della Guerra",
+            "title":"L'Arte della Guerra",
             "description":"Una volta per combattimento, prevedi la mossa successiva del nemico e ottieni un bonus di +2 a un tiro contro quell'avversario. Questa abilità può essere utilizzata solo se ha avuto almeno un round per osservare lo stile di combattimento dell'avversario."
           },
           "tacticalGenius":{
             "title":"Genio Tattico",
-            "description":"Un maestro di strategia e tattica. Può usare il suo punteggio di onore se in condizione onorevole (Onore 10 o superiore) per ottenere un vantaggio in combattimento, riducendo la DR di una parata a DR12."
+            "description":"Un maestro di strategia e tattica. Può usare il suo punteggio di onore se in condizione onorevole (Onore 10 o superiore) per ottenere un vantaggio in combattimento, riducendo la GD di una parata a GD12."
           },
           "preciseStrike":{
             "title":"Colpo Preciso",
             "description":"Addestrato a colpire con precisione, trovando le debolezze nelle difese degli avversari. Una volta per incontro di combattimento, può aggiungere un bonus al suo tiro per colpire pari al suo modificatore di Vigore."
           },
           "intimidatingPresence":{
-            "title":"Presenza Intimidatoria",
-            "description":"La conoscenza e l'addestramento lo rendono un avversario formidabile. Una volta al giorno, può intimidire i suoi nemici, riducendo la DR del suo prossimo attacco di 4."
+            "title":"Presenza Minacciosa",
+            "description":"La conoscenza e l'addestramento lo rendono un avversario formidabile. Una volta al giorno, può intimidire i suoi nemici, riducendo la GD del suo prossimo attacco di 4."
           },
           "zenFocus":{
             "title":"Concentrazione Zen",
@@ -385,10 +385,10 @@
           "tenetsList":[
             "Coraggio",
             "Onestà",
-            "Onore",
+            "Onorevolezza",
             "Lealtà",
             "Autocontrollo",
-            "Autosacrificio"
+            "Sacrificio"
           ]
         }
       },
@@ -400,31 +400,31 @@
         },
         "startingEquipment":{
           "monksRobesAndSandals":"Vesti e sandali da monaco",
-          "gourdOfSake":"Fiaschetta di sake d4 usi"
+          "gourdOfSake":"Hyotan con sake"
         },
         "features":{
-          "drunkenFist":{
-            "title":"Pugno dell'Ubriaco",
+          "GDunkenFist":{
+            "title":"Stile dell'Ubriaco",
             "description":"Il Monaco Ubriaco combatte con uno stile imprevedibile e fluido che confonde gli avversari. Può aggiungere il suo modificatore di Spirito quando effettua attacchi senz'armi."
           },
           "fiveFingerDeathPunch":{
-            "title":"Pugno Mortale delle Cinque Dita",
+            "title":"Colpo delle Cinque Dita",
             "description":"Una volta per sessione, scegli di colpire un avversario con un attacco senz'armi di precisione che mira ai punti di pressione, infliggendo 6d4 danni aggiuntivi in caso di successo e stordendo il bersaglio."
           },
           "roadhouse":{
-            "title":"Roadhouse",
-            "description":"Sferra un attacco brutale alla gola di un avversario, uccidendolo potenzialmente sul colpo. Prima di sferrare un attacco, Prova Spirito DR14. L'attacco richiede che il monaco effettui un attacco riuscito e può essere utilizzato solo su un avversario sorpreso."
+            "title":"Gli Otto Immortali Ubriachi",
+            "description":"Il Monco Ubriaco sferra un attacco brutale potenzialmente mortale alla gola di un avversario. Prima di sferrare il colpo fa una Prova di Spirito GD14. Il colpo richiede che il monaco riesca con successo in un attacco e può essere utilizzato solo su un avversario sorpreso."
           },
           "flameFist":{
-            "title":"Pugno di Fuoco",
+            "title":"Pugni Fiammeggianti",
             "description":"Pugni intrisi di fuoco mistico, che infliggono 1d4 danni da fuoco aggiuntivi e possono potenzialmente incendiare i bersagli. Il Monaco può usare questa abilità solo un numero limitato di volte al giorno (Spirito +1)."
           },
           "sakeStyle":{
             "title":"Stile del Sake",
             "description":"Quando il Monaco Ubriaco è sotto gli effetti dell'alcol, ottiene un bonus temporaneo di +2 ai suoi attacchi in mischia e alla difesa."
           },
-          "drunkenMaster":{
-            "title":"Maestro Ubriaco",
+          "GDunkenMaster":{
+            "title":"Il Maestro Ubriaco",
             "description":"Trasforma qualsiasi oggetto in un'arma, aumentando il danno da d4 a d6. Inoltre, ha un bonus di +1 ai tiri di iniziativa mentre è ubriaco."
           }
         },
@@ -444,7 +444,7 @@
         "weapons":{
           "pairOfKusarigama":{
             "name":"Coppia di kusarigama",
-            "amount":"(mischia/distanza)"
+            "amount":"(mischia+distanza)"
           },
           "shuriken":{
             "name":"Shuriken",
@@ -453,7 +453,7 @@
         },
         "startingEquipment":{
           "darkClothing":"Abiti scuri e anonimi",
-          "vialOfPoison":"Piccola fiala di veleno d6 usi, d4 danni per d4 round"
+          "vialOfPoison":"Piccola fiala di veleno (1d6 usi, 1d4 danni per 1d4 round)"
         },
         "features":{
           "corruptedTechniques":{
@@ -461,7 +461,7 @@
             "description":"Varie tecniche proibite che consentono la manipolazione delle ombre e l'inflizione di terribili maledizioni. Una volta al giorno, può scegliere uno dei seguenti effetti: creare una pozza di oscurità in cui nascondersi o maledire un nemico affinché subisca danni continui (d4 per round)."
           },
           "poisonMaster":{
-            "title":"Maestro dei Veleni",
+            "title":"Esperto di Veleni",
             "description":"Un esperto nella creazione e nell'applicazione di veleni letali. Può creare una dose di veleno durante un riposo breve. I veleni creati in questo modo infliggono d4 danni aggiuntivi."
           },
           "smokeScreen":{
@@ -469,7 +469,7 @@
             "description":"Una volta al giorno, lo shinobi può creare una densa nuvola di fumo che fornisce copertura e oscura la visione. Il fumo dura per d6 round."
           },
           "betrayersBlade":{
-            "title":"Lama del Traditore",
+            "title":"Lama Traditrice",
             "description":"Lo Shinobi Corrotto porta una lama infusa di magia oscura e ha la capacità di assorbire la forza vitale dei suoi nemici. Una volta al giorno, può usare questa abilità per infliggere d8 danni aggiuntivi e curarsi per lo stesso ammontare."
           },
           "shadowStep":{
@@ -482,10 +482,10 @@
           }
         },
         "honourTenets":{
-          "title":"Le Virtù Invisibili",
+          "title":"Le Invisibili Virtù",
           "tenetsList":[
             "Inganno",
-            "Spietatezza",
+            "Crudeltà",
             "Lealtà",
             "Discrezione",
             "Adattabilità",
@@ -508,24 +508,24 @@
             "description":"Una bacchetta intagliata da un albero sacro che vibra e ronza quando il pericolo è vicino. Quando è in uso, la bacchetta punterà nella direzione di eventuali minacce vicine. Una volta al giorno, l'Onmyoji può fare alla bacchetta una domanda sì o no e ricevere una risposta chiara."
           },
           "ofudaTalisman":{
-            "title":"Talismano Ofuda",
-            "description":"Un foglio di carta con simboli protettivi che può essere usato per allontanare spiriti maligni o maledizioni. Il talismano può essere usato una volta al giorno per proteggersi da un singolo attacco o effetto soprannaturale. Prova Spirito DR12 per attivare il talismano e negare l'effetto."
+            "title":"Amuleto Ofuda",
+            "description":"Un foglio di carta con simboli protettivi che può essere usato per allontanare spiriti maligni o maledizioni. L'Amuleto può essere usato una volta al giorno per proteggersi da un singolo attacco o effetto soprannaturale. Prova Spirito GD12 per attivare il talismano e negare l'effetto."
           },
           "spiritBeacon":{
             "title":"Faro Spirituale",
-            "description":"Una volta al giorno, crea un faro luminoso che attira i nemici verso di esso. Prova Spirito DR12. In caso di successo, tutti i nemici nell'area sono attratti dal faro, distraendoli dall'attaccare l'Onmyoji. In caso di fallimento, il faro attira tutti i nemici verso l'Onmyoji. Il faro dura per d6 round."
+            "description":"Una volta al giorno, crea un faro luminoso che attira i nemici verso di esso. Prova Spirito GD12. In caso di successo, tutti i nemici nell'area sono attratti dal faro, distraendoli dall'attaccare l'Onmyoji. In caso di fallimento, il faro attira tutti i nemici verso l'Onmyoji. Il faro dura per d6 round."
           },
           "shadowBinding":{
-            "title":"Legame d'Ombra",
-            "description":"Tenta di legare un nemico alla sua ombra, rendendolo immobile. Per usare questa abilità, Prova Spirito DR12. In caso di successo, il nemico non è in grado di muoversi fino alla fine del turno successivo dell'Onmyoji. L'Onmyoji può usare questa abilità solo un numero limitato di volte al giorno (Spirito +1)."
+            "title":"Vincolo d'Ombra",
+            "description":"Tenta di legare un nemico alla sua ombra, rendendolo immobile. Per usare questa abilità, Prova Spirito GD12. In caso di successo, il nemico non è in grado di muoversi fino alla fine del turno successivo dell'Onmyoji. L'Onmyoji può usare questa abilità solo un numero limitato di volte al giorno (Spirito +1)."
           },
           "textOfExorcism":{
-            "title":"Testo dell'Esorcismo",
-            "description":"Un testo contenente potenti incantesimi e simboli che possono essere usati per bandire spiriti maligni o demoni. Una volta al giorno, l'Onmyoji deve Provare Spirito DR14 per attivare il testo, che può bandire un singolo spirito o demone (non può essere usato a Yomi)."
+            "title":"Testo Sacro",
+            "description":"Un testo contenente potenti formule e simboli in grado di bandire spiriti malvagi e demoni. Una volta al giorno, l'Onmyoji può fare una Prova si  Spirito GD12 per attivare il testo, che bandisce un singolo spirito o demone. Non funziona all'interno dello YOMI."
           },
           "mirrorOfReflection":{
-            "title":"Specchio del Riflesso",
-            "description":"Uno specchio a mano con rune che può essere usato per riflettere incantesimi o attacchi ostili. Una volta al giorno, Prova Spirito DR12 per usare lo specchio, riflettendo qualsiasi incantesimo o attacco diretto contro di loro. Questo infligge i danni dell'attacco all'attaccante."
+            "title":"Specchio Riflettente",
+            "description":"Uno specchio a mano con rune che può essere usato per riflettere incantesimi o attacchi ostili. Una volta al giorno, Prova Spirito GD12 per usare lo specchio, riflettendo qualsiasi incantesimo o attacco diretto contro di loro. Questo infligge i danni dell'attacco all'attaccante."
           }
         },
         "honourTenets":{
@@ -552,7 +552,7 @@
         },
         "features":{
           "gamblingLuck":{
-            "title":"Fortuna del Giocatore d'Azzardo",
+            "title":"Fortunato al Gioco",
             "description":"Il Bakuto può percepire quando un gioco è truccato o qualcuno sta barando. Ottiene +2 alle prove di Spirito quando gioca d'azzardo o a giochi di fortuna. Può anche ritirare un qualsiasi tiro, una volta al giorno."
           },
           "suckerPunch":{
@@ -560,11 +560,11 @@
             "description":"Colpisci prima che sappiano cosa li ha colpiti. Infliggi il doppio dei danni con il tuo primo colpo in un round."
           },
           "dirtyTricks":{
-            "title":"Trucchi Sporchi",
+            "title":"Sporco Trucco",
             "description":"Fai un tiro mancino per ottenere il vantaggio. Una volta per combattimento, aggiungi +2 a qualsiasi tiro di attacco o difesa usando inganno, astuzia o sorpresa."
           },
           "sleightOfHand":{
-            "title":"Gioco di Prestigio",
+            "title":"Abilità di Mano",
             "description":"L'arte del borseggio, dell'intimidazione e del furto. Ottiene +4 alle prove di Spirito quando tenta queste azioni."
           },
           "doubleStrike":{
@@ -573,17 +573,17 @@
           },
           "feint":{
             "title":"Finta",
-            "description":"Scegli di rinunciare al tuo attacco nel tuo turno e invece Prova Spirito DR10. Se ha successo, il Bakuto ottiene un +4 al suo prossimo attacco, infliggendo anche +4 danni."
+            "description":"Scegli di rinunciare al tuo attacco nel tuo turno e invece Prova Spirito GD10. Se ha successo, il Bakuto ottiene un +4 al suo prossimo attacco, infliggendo anche +4 danni."
           }
         },
         "honourTenets":{
-          "title":"La Via del Giocatore d'Azzardo",
+          "title":"La Via del Giocatore",
           "tenetsList":[
             "Onore tra i Ladri",
             "Intraprendenza",
-            "Coraggio",
-            "Autosufficienza",
-            "Camaratismo",
+            "Audacia",
+            "Indipendenza",
+            "Spirito di Squadra",
             "Adattabilità"
           ]
         }
@@ -599,7 +599,7 @@
         },
         "features":{
           "mountainsResolve":{
-            "title":"Determinazione della Montagna",
+            "title":"La Volontà della Montagna",
             "description":"Una volta al giorno, attingi all'energia spirituale delle montagne per ottenere un bonus di +4 a un tiro."
           },
           "spiritualMartialArts":{
@@ -607,11 +607,11 @@
             "description":"Addestrato in una forma unica di arti marziali che incanala l'energia spirituale. Una volta per combattimento, aggiungi il suo modificatore di Spirito a un tiro di attacco o difesa."
           },
           "mountainsFury":{
-            "title":"Furia della Montagna",
+            "title":"La Furia della Montagna",
             "description":"Una volta per combattimento, incanala l'ira delle montagne in un colpo potente, infliggendo d6 danni aggiuntivi."
           },
           "asceticsWisdom":{
-            "title":"Saggezza dell'Asceta",
+            "title":"La Saggezza dell'Asceta",
             "description":"Anni di solitudine hanno dato una profonda intuizione. Una volta al giorno, può ritirare una prova di Spirito fallita."
           },
           "divineGuidance":{
@@ -663,7 +663,7 @@
           },
           "shootingStar":{
             "title":"Stella Cadente",
-            "description":"Una volta per combattimento, esegui un attacco appariscente con la pistola, riducendo di 4 la DR per attaccare quel nemico per il round successivo."
+            "description":"Una volta per combattimento, esegui un attacco appariscente con la pistola, riducendo di 4 la GD per attaccare quel nemico per il round successivo."
           },
           "swordDance":{
             "title":"Danza della Spada",
@@ -766,7 +766,7 @@
           },
           "unyieldingDiscipline":{
             "title":"Disciplina Incrollabile",
-            "description":"Intimidisci i nemici, riducendo la DR del prossimo attacco di -4, una volta al giorno."
+            "description":"Intimidisci i nemici, riducendo la GD del prossimo attacco di -4, una volta al giorno."
           }
         },
         "honourTenets":{
@@ -797,19 +797,19 @@
       },
       "doMaru":{
         "style":"Do-maru",
-        "description":"Armatura media, piastre di ferro o cuoio. Riduce i danni subiti di -d4, penalità di +2 DR alla Rapidità."
+        "description":"Armatura media, piastre di ferro o cuoio. Riduce i danni subiti di -d4, penalità di +2 GD alla Rapidità."
       },
       "kusariArmour":{
         "style":"Armatura Kusari",
-        "description":"Armatura media, anelli di metallo intrecciati. Riduce i danni subiti di -d4, penalità di +2 DR alla Rapidità."
+        "description":"Armatura media, anelli di metallo intrecciati. Riduce i danni subiti di -d4, penalità di +2 GD alla Rapidità."
       },
       "oYoroi":{
         "style":"O-yoroi",
-        "description":"Armatura pesante, piastre di ferro e cotta di maglia. Riduce i danni subiti di -d6, penalità di +4 DR alla Rapidità."
+        "description":"Armatura pesante, piastre di ferro e cotta di maglia. Riduce i danni subiti di -d6, penalità di +4 GD alla Rapidità."
       },
       "haramaki":{
         "style":"Haramaki",
-        "description":"Armatura pesante, cuoio e piastre di ferro. Riduce i danni subiti di -d6, penalità di +4 DR alla Rapidità."
+        "description":"Armatura pesante, cuoio e piastre di ferro. Riduce i danni subiti di -d6, penalità di +4 GD alla Rapidità."
       }
     },
     "equipment":{
