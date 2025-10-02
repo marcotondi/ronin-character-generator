@@ -31,7 +31,7 @@
   },
   "characterGenerator":{
     "classes":{
-      "forgottenRōnin":"Rōnin Dimenticato",
+      "forgottenRonin":"Rōnin Dimenticato",
       "eruditeSamurai":"Saggio Samurai",
       "drunkenMonk":"Monaco Ubriaco",
       "corruptedShinobi":"Shinobi Corrotto",
@@ -44,7 +44,7 @@
     },
     "nickNames":{
       "hawkEye":"Occhio di Falco",
-      "GDagonOfTheSea":"GDago del Mare",
+      "dragonOfTheSea":"Drago del Mare",
       "thunderFang":"Zanna del Tuono",
       "riverGod":"Dio del Fiume",
       "mountainWind":"Vento della Montagna",
@@ -154,7 +154,7 @@
         "title":"Guardiano Spettrale",
         "description":"Evoca un Rōnin scheletrico che combatta al tuo fianco per 1d6 round."
       },
-      "soulGDain":{
+      "soulDrain":{
         "title":"Risucchia Anima",
         "description":"Infliggi 1d8 danni e ottieni altrettanti PF (non puoi superare i tuoi PF massimi)."
       },
@@ -294,7 +294,7 @@
       "delusional":"Delirante."
     },
     "classFeatures":{
-      "forgottenRōnin":{
+      "forgottenRonin":{
         "weapons":{
           "wornKatana":{
             "name":"Katana consumata"
@@ -305,7 +305,7 @@
           "strawHat":"Cappello di paglia"
         },
         "features":{
-          "RōninsResolve":{
+          "roninsResolve":{
             "title":"La Volontà del Rōnin",
             "description":"Il Rōnin Dimenticato può attingere alla sua forza interiore e alla sua determinazione nei momenti di grande bisogno. Una volta al giorno, può tirare un 1d6 e aggiungere il risultato a un qualsiasi tiro che effettua."
           },
@@ -403,7 +403,7 @@
           "gourdOfSake":"Hyotan con sake"
         },
         "features":{
-          "GDunkenFist":{
+          "drunkenFist":{
             "title":"Stile dell'Ubriaco",
             "description":"Il Monaco Ubriaco combatte con uno stile imprevedibile e fluido che confonde gli avversari. Può aggiungere il suo modificatore di Spirito quando effettua attacchi senz'armi."
           },
@@ -423,7 +423,7 @@
             "title":"Stile del Sake",
             "description":"Quando il Monaco Ubriaco è sotto gli effetti dell'alcol, ottiene un bonus temporaneo di +2 ai suoi attacchi in mischia e alla difesa."
           },
-          "GDunkenMaster":{
+          "drunkenMaster":{
             "title":"Il Maestro Ubriaco",
             "description":"Trasforma qualsiasi oggetto in un'arma, aumentando il danno da d4 a d6. Inoltre, ha un bonus di +1 ai tiri di iniziativa mentre è ubriaco."
           }
