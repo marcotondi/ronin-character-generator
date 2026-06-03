@@ -16,10 +16,46 @@ import {
     getAwfulAfflictionsMap,
     getClassFeatures,
 } from './i18n';
-import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, CLASS_I18N_KEYS } from './types';
+import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, CLASS_I18N_KEYS, Modifiers, ClassFeature } from './types';
 import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment, HonourState } from './utils';
 
 type Translator = (key: string, params?: any) => string;
+
+function rollAbilities(classMods: Modifiers, honourState: HonourState): Abilities {
+    return {
+        swiftness: getAbilityModifier(rollDice(3, 6, honourState) + classMods.swiftness),
+        spirit: getAbilityModifier(rollDice(3, 6, honourState) + classMods.spirit),
+        vigor: getAbilityModifier(rollDice(3, 6, honourState) + classMods.vigor),
+        resilience: getAbilityModifier(rollDice(3, 6, honourState) + classMods.resilience),
+        honour: rollDice(3, 6, honourState) + classMods.honour,
+    };
+}
+
+function rollArmor(selectedClass: CharacterClass, hasSpecialEquipment: boolean, honourState: HonourState): Armor {
+    if (selectedClass === CharacterClass.EruditeSamurai) {
+        return determineArmorBasedOnRoll(3);
+    } else if (selectedClass === CharacterClass.SwordSaint) {
+        return determineArmorBasedOnRoll(4);
+    } else if (hasSpecialEquipment) {
+        return determineArmorBasedOnRoll(rollDice(1, 2, honourState));
+    } else {
+        return determineArmorBasedOnRoll(rollDice(1, 4, honourState));
+    }
+}
+
+function rollFlaws(honourState: HonourState) {
+    const brokenBodiesMap = getBrokenBodiesMap();
+    const grimChroniclesMap = getGrimChroniclesMap();
+    const badHabitsMap = getBadHabitsMap();
+    const awfulAfflictionsMap = getAwfulAfflictionsMap();
+
+    return {
+        brokenBodies: brokenBodiesMap.get(rollDice(1, 20, honourState)),
+        grimChronicles: grimChroniclesMap.get(rollDice(1, 20, honourState)),
+        badHabits: badHabitsMap.get(rollDice(1, 20, honourState)),
+        awfulAfflictions: awfulAfflictionsMap.get(rollDice(1, 20, honourState)),
+    };
+}
 
 function rollForStartingWeapon(honourState: HonourState): Weapon | undefined {
     const startingWeaponsMap = getStartingWeaponsMap();
@@ -34,10 +70,6 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     const equipmentMap = getEquipmentMap();
     const unseenTextsMap = getUnseenTextsMap();
     const shintaiTextsMap = getShintaiTextsMap();
-    const brokenBodiesMap = getBrokenBodiesMap();
-    const grimChroniclesMap = getGrimChroniclesMap();
-    const badHabitsMap = getBadHabitsMap();
-    const awfulAfflictionsMap = getAwfulAfflictionsMap();
     const classFeatures = getClassFeatures(t);
 
     const selectedClass = getRandomItem(classes);
@@ -47,14 +79,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     const nickName = getRandomItem(nickNames);
     nickName.english = t(nickName.english);
 
-    const abilities: Abilities = {
-        swiftness: getAbilityModifier(rollDice(3, 6, honourState) + classMods.swiftness),
-        spirit: getAbilityModifier(rollDice(3, 6, honourState) + classMods.spirit),
-        vigor: getAbilityModifier(rollDice(3, 6, honourState) + classMods.vigor),
-        resilience: getAbilityModifier(rollDice(3, 6, honourState) + classMods.resilience),
-        honour: rollDice(3, 6, honourState) + classMods.honour,
-    };
-
+    const abilities = rollAbilities(classMods, honourState);
     const hitPoints = Math.max(1, classFeatures[selectedClass].calculateHitPoints(abilities));
     const honorStatus = abilities.honour >= 10 ? 'page.honour' : 'page.dishonour';
     const equipment = [...classFeatures[selectedClass].startingEquipment.map(key => t(key))];
@@ -69,24 +94,11 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     equipment.push(`${water} ${t('characterGenerator.equipment.water')}`);
 
     const hasSpecialEquipment = equipment.includes('characterGenerator.equipmentMap.unseenText') || equipment.includes('characterGenerator.equipmentMap.shintaiText');
-    let armor: Armor;
-
-    if (selectedClass === CharacterClass.EruditeSamurai) {
-        armor = determineArmorBasedOnRoll(3);
-    } else if (selectedClass === CharacterClass.SwordSaint) {
-        armor = determineArmorBasedOnRoll(4);
-    } else if (hasSpecialEquipment) {
-        armor = determineArmorBasedOnRoll(rollDice(1, 2, honourState));
-    } else {
-        armor = determineArmorBasedOnRoll(rollDice(1, 4, honourState));
-    }
+    const armor = rollArmor(selectedClass, hasSpecialEquipment, honourState);
 
     const featureRoll = rollDice(1, 6, honourState);
     const selectedFeature = classFeatures[selectedClass].features.get(featureRoll);
-    const brokenBodies = brokenBodiesMap.get(rollDice(1, 20, honourState));
-    const grimChronicles = grimChroniclesMap.get(rollDice(1, 20, honourState));
-    const badHabits = badHabitsMap.get(rollDice(1, 20, honourState));
-    const awfulAfflictions = awfulAfflictionsMap.get(rollDice(1, 20, honourState));
+    const flaws = rollFlaws(honourState);
 
     const classWeapons = [...classFeatures[selectedClass].weapons];
     const otherEquipment = [...classFeatures[selectedClass].startingEquipment];
@@ -111,10 +123,10 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         armor,
         classWeapons,
         otherEquipment,
-        brokenBodies,
-        grimChronicles,
-        badHabits,
-        awfulAfflictions,
+        brokenBodies: flaws.brokenBodies,
+        grimChronicles: flaws.grimChronicles,
+        badHabits: flaws.badHabits,
+        awfulAfflictions: flaws.awfulAfflictions,
     };
 
     if (randomStartingWeapon) {
