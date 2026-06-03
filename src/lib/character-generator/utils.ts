@@ -52,10 +52,6 @@ export function rollForEquipment(equipmentMap: Map<number, string>, selectedClas
     do {
         roll = rollDice(1, equipmentMap.size);
         equipment = equipmentMap.get(roll);
-        if (equipment === 'characterGenerator.equipmentMap.firecrackers' || equipment === 'characterGenerator.equipmentMap.healersKits' || equipment === 'characterGenerator.equipmentMap.snakeVenomShuriken') {
-            const quantity = rollDice(1, 4);
-            equipment = equipment.replace("4", quantity.toString());
-        }
         attempts++;
     } while ((selectedClass === CharacterClass.Onmyoji || selectedClass === CharacterClass.Yamabushi) && equipment === 'characterGenerator.equipmentMap.unseenText' && attempts < maxAttempts);
     return equipment || "";

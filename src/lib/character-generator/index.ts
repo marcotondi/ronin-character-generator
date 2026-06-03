@@ -16,7 +16,7 @@ import {
     getAwfulAfflictionsMap,
     getClassFeatures,
 } from './i18n';
-import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, CLASS_I18N_KEYS, Modifiers, ClassFeature } from './types';
+import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, Modifiers, ClassFeature } from './types';
 import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment, HonourState } from './utils';
 
 type Translator = (key: string, params?: any) => string;
@@ -70,7 +70,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     const equipmentMap = getEquipmentMap();
     const unseenTextsMap = getUnseenTextsMap();
     const shintaiTextsMap = getShintaiTextsMap();
-    const classFeatures = getClassFeatures(t);
+    const classFeatures = getClassFeatures();
 
     const selectedClass = getRandomItem(classes);
     const classMods = classFeatures[selectedClass].modifiers;
@@ -93,7 +93,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     equipment.push(`${food} ${t('characterGenerator.equipment.food')}`);
     equipment.push(`${water} ${t('characterGenerator.equipment.water')}`);
 
-    const hasSpecialEquipment = equipment.includes('characterGenerator.equipmentMap.unseenText') || equipment.includes('characterGenerator.equipmentMap.shintaiText');
+    const hasSpecialEquipment = randomEquipment === 'characterGenerator.equipmentMap.unseenText';
     const armor = rollArmor(selectedClass, hasSpecialEquipment, honourState);
 
     const featureRoll = rollDice(1, 6, honourState);
@@ -141,7 +141,15 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
             character.randomUnseenText = unseenText;
         }
     } else {
-        equipment.push(t(randomEquipment));
+        const translatedItem = t(randomEquipment);
+        if (randomEquipment === 'characterGenerator.equipmentMap.firecrackers' ||
+            randomEquipment === 'characterGenerator.equipmentMap.healersKits' ||
+            randomEquipment === 'characterGenerator.equipmentMap.snakeVenomShuriken') {
+            const quantity = rollDice(1, 4, honourState);
+            equipment.push(translatedItem.replace("4", quantity.toString()));
+        } else {
+            equipment.push(translatedItem);
+        }
     }
 
     if (selectedClass === CharacterClass.Yamabushi) {

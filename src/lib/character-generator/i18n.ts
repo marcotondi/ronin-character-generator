@@ -6,7 +6,6 @@ import {
   ClassFeature,
   Feature,
   HonourTenet,
-  Armor,
   CharacterClass
 } from './types';
 import { rollDice } from './utils';
@@ -14,8 +13,6 @@ import { nicknames } from './data/nicknames';
 import { carryMap, equipmentMap, startingWeaponsMap } from './data/equipment';
 import { unseenTextsMap, shintaiTextsMap } from './data/texts';
 import { brokenBodiesMap, grimChroniclesMap, badHabitsMap, awfulAfflictionsMap } from './data/flaws';
-
-type Translator = (key: string, params?: any) => any;
 
 export const getClasses = (): CharacterClass[] => [
   CharacterClass.ForgottenRonin,
@@ -50,7 +47,7 @@ export const getBadHabitsMap = (): Map<number, string> => badHabitsMap;
 
 export const getAwfulAfflictionsMap = (): Map<number, string> => awfulAfflictionsMap;
 
-export const getClassFeatures = (t: Translator): Record<CharacterClass, ClassFeature> => ({
+export const getClassFeatures = (): Record<CharacterClass, ClassFeature> => ({
   [CharacterClass.ForgottenRonin]: {
     modifiers: { swiftness: 2, spirit: -2, vigor: 2, resilience: 2, honour: -1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 10)),
