@@ -27,7 +27,7 @@ export const getClasses = (): CharacterClass[] => [
   CharacterClass.SwordSaint,
 ];
 
-export const getNickNames = (): NickName[] => nicknames;
+export const getNickNames = (): NickName[] => nicknames.map(n => ({ ...n }));
 
 export const getCarryMap = (): Map<number, string> => carryMap;
 
