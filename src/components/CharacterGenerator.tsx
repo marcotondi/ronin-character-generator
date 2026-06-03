@@ -4,9 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 import { generateCharacter } from "@/lib/character-generator";
-import { Character, CLASS_I18N_KEYS } from "@/lib/character-generator/types";
+import { Character } from "@/lib/character-generator/types";
 import { HonourState } from "@/lib/character-generator/utils";
 import { useTranslations } from "next-intl";
+import { CharacterHeader } from "./character/CharacterHeader";
+import { StatsDisplay } from "./character/StatsDisplay";
+import { AttributesDisplay } from "./character/AttributesDisplay";
+import { HonourTenetsDisplay } from "./character/HonourTenetsDisplay";
+import { EquipmentDisplay } from "./character/EquipmentDisplay";
+import { TextsDisplay } from "./character/TextsDisplay";
 
 export default function CharacterGenerator() {
   const t = useTranslations();
@@ -92,200 +98,28 @@ export default function CharacterGenerator() {
 
         {character && (
           <>
-            <div className="text-center space-y-2">
-              <p className="text-muted-foreground">{t("page.youAre")}</p>
-              <h2 className="text-4xl font-headline font-bold text-primary">
-                {character.firstName.toUpperCase()}{" "}
-                {character.lastName.toUpperCase()}
-              </h2>
-              <p className="text-xl italic">
-                &quot;{character.nickName.english}&quot;
-              </p>
-              <p className="text-2xl font-headline font-bold text-primary">
-                &quot;{character.nickName.kanji}&quot;
-              </p>
-              <p className="text-xl font-headline font-bold">
-                &quot;{character.nickName.japanese}&quot;
-              </p>
-              <p className="text-muted-foreground">{t("page.the")}</p>
-              <h3 className="text-3xl font-headline font-bold text-primary/80 tracking-wider">
-                {t(CLASS_I18N_KEYS[character.class])}
-              </h3>
-            </div>
+            <CharacterHeader character={character} />
 
             <Separator className="my-8" />
 
-            <div className="flex justify-around items-center text-center flex-wrap gap-4 text-sm sm:text-base">
-              <p>
-                <span className="font-bold">{t("page.hp")}</span>{" "}
-                <span className="">{character.hitPoints}</span>
-              </p>
-              <p>
-                <span className="font-bold">{t("page.virtues")}</span>{" "}
-                {character.virtues} ({character.virtuesDice})
-              </p>
-              <p>
-                <span className="font-bold">{t("page.honor")}</span>{" "}
-                {character.honor} ({t(character.honorStatus)})
-              </p>
-              <p>
-                <span className="font-bold">{t("page.ryo")}</span>{" "}
-                {character.ryo}
-              </p>
-            </div>
+            <StatsDisplay character={character} />
 
             <Separator className="my-8" />
 
-            <div className="grid grid-cols-5 gap-x-8 gap-y-6">
-              <div className="col-span-5 md:col-span-3 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.attributes")}
-                </h3>
-                <p className="text-muted-foreground">
-                  {t(character.brokenBodies ?? "")}
-                </p>
-                <p className="text-muted-foreground">
-                  {t(character.grimChronicles ?? "")}
-                </p>
-                <p className="text-muted-foreground">
-                  {t(character.badHabits ?? "")}
-                </p>
-                <p className="text-muted-foreground">
-                  {t(character.awfulAfflictions ?? "")}
-                </p>
-              </div>
-              <div className="col-span-5 md:col-span-2 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.abilities")}
-                </h3>
-                <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-                  <li>
-                    {t("page.swiftness")}: {character.abilities.swiftness}
-                  </li>
-                  <li>
-                    {t("page.spirit")}: {character.abilities.spirit}
-                  </li>
-                  <li>
-                    {t("page.vigor")}: {character.abilities.vigor}
-                  </li>
-                  <li>
-                    {t("page.resilience")}: {character.abilities.resilience}
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <AttributesDisplay character={character} />
 
             <Separator className="my-8" />
 
-            <div className="text-center space-y-2">
-              <p className="text-muted-foreground">{t("page.youMustFollow")}</p>
-              <h3 className="text-2xl font-headline font-bold text-primary tracking-wider">
-                {t(character.honourTenets.title)}
-              </h3>
-              <p className="text-muted-foreground">
-                {character.honourTenets.tenetsList
-                  .map((tenet: string) => t(tenet))
-                  .join(" • ")}
-              </p>
-            </div>
+            <HonourTenetsDisplay character={character} />
 
             <Separator className="my-8" />
 
-            <div className="grid grid-cols-5 gap-x-8 gap-y-6">
-              <div className="col-span-5 md:col-span-2 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.weapons")}
-                </h3>
-                <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-                  {character.classWeapons.map((weapon) => (
-                    <li key={weapon.name}>
-                      <strong className="text-primary">
-                        {t(weapon.name)}{" "}
-                      </strong>
-                      {weapon.damage ? weapon.damage : ""}{" "}
-                      {weapon.amount ? t(weapon.amount) : ""}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-span-5 md:col-span-3 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.armour")}
-                </h3>
-                <div className="flex items-baseline gap-4">
-                  <p className="font-semibold">{t(character.armor.style)}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {t("page.tier")} {character.armor.tier}
-                  </p>
-                </div>
-                <p className="text-muted-foreground">
-                  {t(character.armor.description)}
-                </p>
-              </div>
-            </div>
-
-            <Separator className="my-8" />
-
-            <div className="grid grid-cols-5 gap-x-8 gap-y-6">
-              <div className="col-span-5 md:col-span-2 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.equipment")}
-                </h3>
-                <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-                  {character.equipment.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-span-5 md:col-span-3 space-y-2">
-                <h3 className="text-2xl font-headline text-primary font-bold">
-                  {t("page.feature")}
-                </h3>
-                <p className="font-semibold">{t(character.feature.title)}</p>
-                <p className="text-muted-foreground">
-                  {t(character.feature.description)}
-                </p>
-              </div>
-            </div>
+            <EquipmentDisplay character={character} />
 
             {(character.unseenText || character.randomUnseenText || character.shintaiText) && (
               <>
                 <Separator className="my-8" />
-                <div className="py-8 flex justify-center">
-                  <div className="flex w-full max-w-4xl items-start gap-8">
-                    {(character.unseenText || character.randomUnseenText) && (
-                      <div className="flex-1 space-y-4 text-center">
-                        <h3 className="text-2xl font-headline font-bold text-primary tracking-wider">
-                          {t("page.unseenText")}
-                        </h3>
-                        <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
-                          {t((character.unseenText ?? character.randomUnseenText)!.title)}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {t((character.unseenText ?? character.randomUnseenText)!.description)}
-                        </p>
-                      </div>
-                    )}
-
-                    {(character.unseenText || character.randomUnseenText) && character.shintaiText && (
-                      <div className="w-px bg-border h-auto self-stretch" />
-                    )}
-
-                    {character.shintaiText && (
-                      <div className="flex-1 space-y-4 text-center">
-                        <h3 className="text-2xl font-headline font-bold text-primary tracking-wider">
-                          {t("page.shintaiText")}
-                        </h3>
-                        <p className="font-special text-muted-foreground text-sm tracking-[0.5em] bg-stone-700/50 rounded-sm px-4 py-1 inline-block">
-                          {t(character.shintaiText.title)}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {t(character.shintaiText.description)}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                <TextsDisplay character={character} />
               </>
             )}
 
