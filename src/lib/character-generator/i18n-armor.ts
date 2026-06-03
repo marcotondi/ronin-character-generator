@@ -1,7 +1,5 @@
 import { Armor } from "./types";
 
-type Translator = (key: string) => string;
-
 export const getArmorsByRoll = (): { [key: number]: Armor[] } => ({
     1: [{ style: 'characterGenerator.armors.noArmour.style', tier: 0, description: 'characterGenerator.armors.noArmour.description' }],
     2: [

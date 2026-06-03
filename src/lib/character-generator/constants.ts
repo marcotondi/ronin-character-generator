@@ -1,7 +1,3 @@
-import { NickName, Weapon, UnseenText, ShintaiText, ClassFeature, Feature } from './types';
-
-import { rollDice } from './utils';
-
 export const firstNames: string[] = [
     "Himura",
     "Daichi",
