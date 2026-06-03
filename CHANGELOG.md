@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.1-beta] - 2025-06-03
+
+### Fixed
+- `hasSpecialEquipment` check comparing translated strings against raw keys (armor logic was always rolling 1-4)
+- Quantity replacement for firecrackers/healersKits/snakeVenomShuriken applied on untranslated key (quantity was silently lost)
+- Nickname mutation bug causing `MISSING_MESSAGE` error on character re-generation
+- Duplicate React keys in equipment list (`Empty-handed` from both starting equipment and carry)
+- Dead imports in `constants.ts` and `i18n-armor.ts`
+- Unused `Translator` parameter in `getClassFeatures()`
+
 ## [1.2.0-beta] - 2025-06-03
 
 ### Added
