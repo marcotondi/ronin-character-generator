@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 import { generateCharacter } from "@/lib/character-generator";
 import { Character } from "@/lib/character-generator/types";
+import { HonourState } from "@/lib/character-generator/utils";
 import { useTranslations } from "next-intl";
 
 export default function CharacterGenerator() {
@@ -15,7 +16,8 @@ export default function CharacterGenerator() {
   const [character, setCharacter] = useState<Character | null>(null);
 
   const handleGenerate = () => {
-    const newCharacter = generateCharacter(t);
+    const honourState: HonourState = lastDeath === "honour" ? "honourable" : lastDeath === "dishonour" ? "dishonourable" : "none";
+    const newCharacter = generateCharacter(t, honourState);
     setCharacter(newCharacter);
   };
 

@@ -17,17 +17,17 @@ import {
     getClassFeatures,
 } from './i18n';
 import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor } from './types';
-import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment } from './utils';
+import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment, HonourState } from './utils';
 
 type Translator = (key: string, params?: any) => string;
 
-function rollForStartingWeapon(): Weapon | undefined {
+function rollForStartingWeapon(honourState: HonourState): Weapon | undefined {
     const startingWeaponsMap = getStartingWeaponsMap();
-    const weaponRoll = rollDice(1, startingWeaponsMap.size);
+    const weaponRoll = rollDice(1, startingWeaponsMap.size, honourState);
     return startingWeaponsMap.get(weaponRoll);
 }
 
-export function generateCharacter(t: Translator): Character {
+export function generateCharacter(t: Translator, honourState: HonourState = "none"): Character {
     const classes = getClasses();
     const nickNames = getNickNames();
     const carryMap = getCarryMap();
@@ -42,18 +42,17 @@ export function generateCharacter(t: Translator): Character {
 
     const selectedClass = getRandomItem(classes);
     const classMods = classFeatures[selectedClass].modifiers;
-    console.log("Selected class:", selectedClass);
     const firstName = getRandomItem(firstNames);
     const lastName = getRandomItem(lastNames);
     const nickName = getRandomItem(nickNames);
     nickName.english = t(nickName.english);
 
     const abilities: Abilities = {
-        swiftness: getAbilityModifier(rollDice(3, 6) + classMods.swiftness),
-        spirit: getAbilityModifier(rollDice(3, 6) + classMods.spirit),
-        vigor: getAbilityModifier(rollDice(3, 6) + classMods.vigor),
-        resilience: getAbilityModifier(rollDice(3, 6) + classMods.resilience),
-        honour: rollDice(3, 6) + classMods.honour,
+        swiftness: getAbilityModifier(rollDice(3, 6, honourState) + classMods.swiftness),
+        spirit: getAbilityModifier(rollDice(3, 6, honourState) + classMods.spirit),
+        vigor: getAbilityModifier(rollDice(3, 6, honourState) + classMods.vigor),
+        resilience: getAbilityModifier(rollDice(3, 6, honourState) + classMods.resilience),
+        honour: rollDice(3, 6, honourState) + classMods.honour,
     };
 
     const hitPoints = Math.max(1, classFeatures[selectedClass].calculateHitPoints(abilities));
@@ -64,8 +63,8 @@ export function generateCharacter(t: Translator): Character {
 
     const randomEquipment = rollForEquipment(equipmentMap, selectedClass);
     const texts: (UnseenText | ShintaiText)[] = [];
-    const food = rollDice(1, 4);
-    const water = rollDice(1, 4);
+    const food = rollDice(1, 4, honourState);
+    const water = rollDice(1, 4, honourState);
     equipment.push(`${food} ${t('characterGenerator.equipment.food')}`);
     equipment.push(`${water} ${t('characterGenerator.equipment.water')}`);
 
@@ -77,25 +76,21 @@ export function generateCharacter(t: Translator): Character {
     } else if (selectedClass === 'characterGenerator.classes.swordSaint') {
         armor = determineArmorBasedOnRoll(4);
     } else if (hasSpecialEquipment) {
-        armor = determineArmorBasedOnRoll(rollDice(1, 2));
+        armor = determineArmorBasedOnRoll(rollDice(1, 2, honourState));
     } else {
-        armor = determineArmorBasedOnRoll(rollDice(1, 4));
+        armor = determineArmorBasedOnRoll(rollDice(1, 4, honourState));
     }
 
-    const featureRoll = rollDice(1, 6);
+    const featureRoll = rollDice(1, 6, honourState);
     const selectedFeature = classFeatures[selectedClass].features.get(featureRoll);
-    const brokenBodies = brokenBodiesMap.get(rollDice(1, 20));
-    const grimChronicles = grimChroniclesMap.get(rollDice(1, 20));
-    const badHabits = badHabitsMap.get(rollDice(1, 20));
-    const awfulAfflictions = awfulAfflictionsMap.get(rollDice(1, 20));
-
-    console.log("Selected class:", selectedClass);
-    console.log("Generated character abilities:", abilities);
-    console.log("Selected feature:", selectedFeature?.title);
+    const brokenBodies = brokenBodiesMap.get(rollDice(1, 20, honourState));
+    const grimChronicles = grimChroniclesMap.get(rollDice(1, 20, honourState));
+    const badHabits = badHabitsMap.get(rollDice(1, 20, honourState));
+    const awfulAfflictions = awfulAfflictionsMap.get(rollDice(1, 20, honourState));
 
     const classWeapons = [...classFeatures[selectedClass].weapons];
     const otherEquipment = [...classFeatures[selectedClass].startingEquipment];
-    const randomStartingWeapon = rollForStartingWeapon();
+    const randomStartingWeapon = rollForStartingWeapon(honourState);
 
     const character: Character = {
         class: selectedClass,
@@ -128,7 +123,7 @@ export function generateCharacter(t: Translator): Character {
 
     if (randomEquipment === 'characterGenerator.equipmentMap.unseenText') {
         equipment.push(t('characterGenerator.equipmentMap.unseenText'));
-        const unseenTextKey = rollDice(1, unseenTextsMap.size);
+        const unseenTextKey = rollDice(1, unseenTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextKey);
         if (unseenText) {
             character.randomUnseenText = unseenText;
@@ -138,35 +133,29 @@ export function generateCharacter(t: Translator): Character {
     }
 
     if (selectedClass === 'characterGenerator.classes.yamabushi') {
-        const unseenTextRoll = rollDice(1, unseenTextsMap.size);
+        const unseenTextRoll = rollDice(1, unseenTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextRoll);
         if (unseenText) {
             character.unseenText = unseenText;
-            console.log("Assigned Unseen Text:", character.unseenText);
         }
     }
 
     if (selectedClass === 'characterGenerator.classes.onmyoji') {
-        const unseenTextKey = rollDice(1, unseenTextsMap.size);
-        const shintaiTextKey = rollDice(1, shintaiTextsMap.size);
+        const unseenTextKey = rollDice(1, unseenTextsMap.size, honourState);
+        const shintaiTextKey = rollDice(1, shintaiTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextKey);
         const shintaiText = shintaiTextsMap.get(shintaiTextKey);
         if (unseenText) {
             character.unseenText = unseenText;
-            console.log("Assigned Unseen Text for Onmyoji:", character.unseenText);
         }
         if (shintaiText) {
             character.shintaiText = shintaiText;
-            console.log("Assigned Shintai Text for Onmyoji:", character.shintaiText);
         }
     }
 
     if (selectedClass === 'characterGenerator.classes.recklessSumo') {
         character.classFeatures = { foodConsumption: classFeatures[selectedClass].foodConsumption! };
     }
-
-    console.log("Generated Abilities:", abilities);
-    console.log("About to display character", character);
 
     return character;
 }

@@ -3,23 +3,21 @@ import { getArmorsByRoll } from "./i18n-armor";
 
 type Translator = (key: string) => string;
 
-let honourState: "honourable" | "dishonourable" | "none" = "none";
+export type HonourState = "honourable" | "dishonourable" | "none";
 
 export function getRandomItem<T>(array: T[]): T {
     return array[Math.floor(Math.random() * array.length)];
 }
 
-export function rollDice(numberOfDice: number, sides: number): number {
+export function rollDice(numberOfDice: number, sides: number, honourState: HonourState = "none"): number {
     let total = 0;
     for (let i = 0; i < numberOfDice; i++) {
         total += Math.floor(Math.random() * sides) + 1;
     }
     if (numberOfDice === 3) {
         if (honourState === "honourable") {
-            console.log("Original total:", total, "+ 1 for being honourable");
             total += 1;
         } else if (honourState === "dishonourable") {
-            console.log("Original total:", total, "- 1 for being dishonourable");
             total -= 1;
         }
     }
@@ -34,10 +32,6 @@ export function getAbilityModifier(score: number): number {
     if (score <= 14) return 1;
     if (score <= 16) return 2;
     return 3;
-}
-
-export function toggleHonourState(state: "honourable" | "dishonourable"): void {
-    honourState = honourState === state ? "none" : state;
 }
 
 export function determineArmorBasedOnRoll(roll: number): Armor {
