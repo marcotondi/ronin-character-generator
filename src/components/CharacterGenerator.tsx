@@ -147,6 +147,12 @@ export default function CharacterGenerator() {
                 <p className="text-muted-foreground">
                   {t(character.grimChronicles ?? "")}
                 </p>
+                <p className="text-muted-foreground">
+                  {t(character.badHabits ?? "")}
+                </p>
+                <p className="text-muted-foreground">
+                  {t(character.awfulAfflictions ?? "")}
+                </p>
               </div>
               <div className="col-span-5 md:col-span-2 space-y-2">
                 <h3 className="text-2xl font-headline text-primary font-bold">
