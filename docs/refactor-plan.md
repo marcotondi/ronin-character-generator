@@ -1,60 +1,102 @@
 # Refactor Plan — Ronin Character Generator
 
+> **Stato:** Completato su branch `refactor/code-review-fixes`
+
 ## Fase 1 — Fix Funzionali (priorità alta)
 
-### 1.1 Collegare `lastDeath` a `generateCharacter()`
-- **Problema:** I bottoni Honour/Dishonour nel UI aggiornano `lastDeath` ma non influenzano la generazione. `honourState` in `utils.ts` è una variabile globale mutabile mai collegata al componente.
-- **Fix:** Passare `lastDeath` come parametro a `generateCharacter(t, honourState?)`. Rimuovere `honourState` globale e `toggleHonourState()` da `utils.ts`.
-- **File:** `src/components/CharacterGenerator.tsx`, `src/lib/character-generator/index.ts`, `src/lib/character-generator/utils.ts`
+### 1.1 Collegare `lastDeath` a `generateCharacter()` ✅
+- **Problema:** I bottoni Honour/Dishonour nel UI aggiornavano `lastDeath` ma non influenzavano la generazione. `honourState` in `utils.ts` era una variabile globale mutabile mai collegata al componente.
+- **Fix applicato:** `honourState` passato come parametro esplicito a `generateCharacter(t, honourState?)` e a `rollDice()`. Rimosso stato globale e `toggleHonourState()`.
+- **Commit:** `afdb7af`
 
-### 1.2 Renderizzare `badHabits` e `awfulAfflictions`
-- **Problema:** `generateCharacter()` genera `badHabits` e `awfulAfflictions` (linee 89-90 di `index.ts`) ma il componente UI non li mostra mai.
-- **Fix:** Aggiungere sezioni UI per entrambi nel `CharacterGenerator.tsx`, oppure rimuoverli dalla generazione se non servono.
-- **File:** `src/components/CharacterGenerator.tsx`
+### 1.2 Renderizzare `badHabits` e `awfulAfflictions` ✅
+- **Problema:** `generateCharacter()` generava `badHabits` e `awfulAfflictions` ma il componente UI non li mostrava mai.
+- **Fix applicato:** Aggiunte 4 righe di rendering nella sezione attributi del componente (ora `AttributesDisplay`).
+- **Commit:** `387f17b`
 
 ## Fase 2 — Pulizia e Robustezza (priorità media)
 
-### 2.1 Rimuovere `console.log` di debug
-- ~10 `console.log` in `src/lib/character-generator/index.ts` (linee 45, 92-94, 145, 156, 160, 168-169)
-- 1 `console.error` in `utils.ts:49` (valutare se mantenerlo o usare un logger)
+### 2.1 Rimuovere `console.log` di debug ✅
+- Rimossi tutti i `console.log` da `index.ts` (~10 occorrenze).
+- **Nota:** `console.error` in `utils.ts` mantenuto come fallback per armor roll invalidi.
+- **Commit:** `afdb7af`
 
-### 2.2 Fix loop potenzialmente infinito
-- `rollForEquipment()` in `utils.ts:56-63` usa `do...while` senza limite. Aggiungere un max di tentativi (es. 10).
+### 2.2 Fix loop potenzialmente infinito ✅
+- Aggiunto `maxAttempts = 10` al `do...while` in `rollForEquipment()`.
+- **Commit:** `310163e`
 
-### 2.3 Fix colore hardcoded
-- `CharacterGenerator.tsx:194` — `style={{ color: "#ECCF18" }}` → usare `text-primary` o classe Tailwind.
+### 2.3 Fix colore hardcoded ✅
+- `style={{ color: "#ECCF18" }}` sostituito con `className="text-primary"`.
+- **Commit:** `310163e`
 
-### 2.4 Fix React keys
-- `CharacterGenerator.tsx:192,227` — `index` come key → usare identificatori stabili (nome arma, nome item).
+### 2.4 Fix React keys ✅
+- `index` come key sostituito con `weapon.name` per le armi e `item` per l'equipaggiamento.
+- **Commit:** `310163e`
 
-### 2.5 CSS `:root` duplicato
-- `globals.css:10-44` — `:root` è identico a `.dark` ma `<html>` ha sempre `className="dark"`. Rimuovere `:root` o differenziarlo.
+### 2.5 CSS `:root` duplicato ✅
+- Blocco `:root` rimosso da `globals.css` (l'app è sempre in dark mode).
+- **Commit:** `310163e`
 
-### 2.6 Componente morto `LanguageSwitcher`
-- `src/components/LanguageSwitcher.tsx` non è importato da nessuna parte. Decidere: integrarlo nel layout o eliminarlo.
+### 2.6 Componente morto `LanguageSwitcher` ✅
+- Eliminato `src/components/LanguageSwitcher.tsx` (non importato da nessuna parte).
+- **Commit:** `d91f710`
 
-### 2.7 Unificare `randomUnseenText` vs `unseenText`
-- `types.ts:91-92` — due campi separati con semantica poco chiara. Valutare se unificarli o documentare la differenza.
+### 2.7 Unificare `randomUnseenText` vs `unseenText` ✅
+- Non unificati i campi (hanno semantica diversa: `unseenText` è assegnato per classe, `randomUnseenText` da roll equipaggiamento). Reso `randomUnseenText` visibile nel UI con fallback `unseenText ?? randomUnseenText`.
+- **Commit:** `d91f710`
 
 ## Fase 3 — Refactor Architetturale (priorità bassa)
 
-### 3.1 Introdurre enum `CharacterClass`
-- Sostituire il branching su stringhe i18n (`'characterGenerator.classes.eruditeSamurai'`) con un enum TypeScript. Le stringhe i18n restano solo per la traduzione nel UI.
+### 3.1 Introdurre enum `CharacterClass` ✅
+- Creato `CharacterClass` enum in `types.ts` con mapping `CLASS_I18N_KEYS` per la traduzione UI.
+- Tutti i confronti su stringhe i18n sostituiti con enum (`CharacterClass.EruditeSamurai` invece di `'characterGenerator.classes.eruditeSamurai'`).
+- `getClassFeatures()` ora usa `Record<CharacterClass, ClassFeature>` invece di `{ [key: string]: ClassFeature }`.
+- **Commit:** `3780750`
 
-### 3.2 Separare dati da logica
-- Estrarre i dati di gioco (classi, armi, equipaggiamento, armature) da `i18n.ts` in file data dedicati (`data/classes.ts`, `data/weapons.ts`, ecc.). `i18n.ts` resta solo per le mappe di traduzione.
+### 3.2 Separare dati da logica ✅
+- Creati 4 file data in `src/lib/character-generator/data/`:
+  - `nicknames.ts` — 20 soprannomi
+  - `equipment.ts` — carry map, equipment map, starting weapons map
+  - `texts.ts` — unseen texts map, shintai texts map
+  - `flaws.ts` — broken bodies, grim chronicles, bad habits, awful afflictions
+- `i18n.ts` ora agisce come facade, importando dai file data.
+- **Commit:** `f42b284`
 
-### 3.3 Spezzare `generateCharacter()`
-- Estrarre funzioni: `rollAbilities()`, `rollEquipment()`, `rollClassSpecifics()`, `rollFlaws()` (brokenBodies, grimChronicles, badHabits, awfulAfflictions).
+### 3.3 Spezzare `generateCharacter()` ✅
+- Estratte 3 funzioni focalizzate:
+  - `rollAbilities(classMods, honourState)` — generazione attributi
+  - `rollArmor(selectedClass, hasSpecialEquipment, honourState)` — determinazione armatura
+  - `rollFlaws(honourState)` — broken bodies, grim chronicles, bad habits, awful afflictions
+- `generateCharacter()` ridotto da ~170 a ~130 righe, più leggibile.
+- **Commit:** `8742fc5`
 
-### 3.4 Spezzare `CharacterGenerator.tsx`
-- Creare sottocomponenti: `CharacterHeader`, `StatsDisplay`, `EquipmentDisplay`, `TextsDisplay`, `FlawsDisplay`.
+### 3.4 Spezzare `CharacterGenerator.tsx` ✅
+- Creati 6 sottocomponenti in `src/components/character/`:
+  - `CharacterHeader` — nome, soprannome, classe
+  - `StatsDisplay` — PF, virtù, onore, ryo
+  - `AttributesDisplay` — attributi, abilità, difetti
+  - `HonourTenetsDisplay` — precetti d'onore
+  - `EquipmentDisplay` — armi, armatura, equipaggiamento, caratteristica
+  - `TextsDisplay` — testi dell'invisibile e shintai
+- `CharacterGenerator.tsx` ora è una composizione pulita di componenti focalizzati.
+- **Commit:** `4f32789`
 
-## Ordine di Esecuzione
+## Riepilogo Commit
 
-1. Creare branch `refactor/code-review-fixes`
-2. Fase 1.1 → commit → `npm run typecheck`
-3. Fase 1.2 → commit → `npm run typecheck`
-4. Fase 2.1-2.5 → commit → `npm run typecheck`
-5. Fase 2.6-2.7 → commit → `npm run typecheck`
-6. Fase 3 (opzionale, da discutere)
+| Commit | Tipo | Descrizione |
+|--------|------|-------------|
+| `fcb0df2` | chore | AGENTS.md, refactor plan, sync modifiche preesistenti |
+| `afdb7af` | fix | Honour/dishonour state collegato alla generazione |
+| `387f17b` | feat | badHabits e awfulAfflictions renderizzati |
+| `310163e` | refactor | Loop guard, colori, keys, CSS cleanup |
+| `d91f710` | refactor | Rimosso LanguageSwitcher, renderizzato randomUnseenText |
+| `3780750` | refactor | Enum `CharacterClass` per type-safety |
+| `f42b284` | refactor | Dati estratti in file dedicati |
+| `8742fc5` | refactor | `generateCharacter()` spezzato in funzioni |
+| `4f32789` | refactor | `CharacterGenerator.tsx` spezzato in sottocomponenti |
+
+## Note Aperte
+
+- **Logging:** i `console.log` sono stati rimossi. Da valutare un logger condizionale (solo in dev) o un debug toggle UI se serve tracciare le scelte di generazione.
+- **Download scheda:** il pulsante resta commentato con TODO (feature non implementata).
+- **`i18n.ts` class features:** `getClassFeatures()` contiene ancora ~490 righe di dati per-classe inline. Candidato per futura estrazione in `data/classes.ts`.
