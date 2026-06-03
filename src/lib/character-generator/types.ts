@@ -1,3 +1,29 @@
+export enum CharacterClass {
+    ForgottenRonin = 'forgottenRonin',
+    EruditeSamurai = 'eruditeSamurai',
+    DrunkenMonk = 'drunkenMonk',
+    CorruptedShinobi = 'corruptedShinobi',
+    Onmyoji = 'onmyoji',
+    Bakuto = 'bakuto',
+    Yamabushi = 'yamabushi',
+    WildDancer = 'wildDancer',
+    RecklessSumo = 'recklessSumo',
+    SwordSaint = 'swordSaint',
+}
+
+export const CLASS_I18N_KEYS: Record<CharacterClass, string> = {
+    [CharacterClass.ForgottenRonin]: 'characterGenerator.classes.forgottenRonin',
+    [CharacterClass.EruditeSamurai]: 'characterGenerator.classes.eruditeSamurai',
+    [CharacterClass.DrunkenMonk]: 'characterGenerator.classes.drunkenMonk',
+    [CharacterClass.CorruptedShinobi]: 'characterGenerator.classes.corruptedShinobi',
+    [CharacterClass.Onmyoji]: 'characterGenerator.classes.onmyoji',
+    [CharacterClass.Bakuto]: 'characterGenerator.classes.bakuto',
+    [CharacterClass.Yamabushi]: 'characterGenerator.classes.yamabushi',
+    [CharacterClass.WildDancer]: 'characterGenerator.classes.wildDancer',
+    [CharacterClass.RecklessSumo]: 'characterGenerator.classes.recklessSumo',
+    [CharacterClass.SwordSaint]: 'characterGenerator.classes.swordSaint',
+};
+
 export interface NickName {
     english: string;
     japanese: string;
@@ -66,7 +92,7 @@ export interface Armor {
 }
 
 export interface Character {
-    class: string;
+    class: CharacterClass;
     firstName: string;
     lastName: string;
     nickName: NickName;

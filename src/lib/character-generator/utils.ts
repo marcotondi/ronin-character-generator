@@ -1,4 +1,4 @@
-import { Armor } from "./types";
+import { Armor, CharacterClass } from "./types";
 import { getArmorsByRoll } from "./i18n-armor";
 
 type Translator = (key: string) => string;
@@ -44,7 +44,7 @@ export function determineArmorBasedOnRoll(roll: number): Armor {
     return armorsByRoll[1][0];
 }
 
-export function rollForEquipment(equipmentMap: Map<number, string>, selectedClass: string): string {
+export function rollForEquipment(equipmentMap: Map<number, string>, selectedClass: CharacterClass): string {
     let roll: number;
     let equipment: string | undefined;
     let attempts = 0;
@@ -57,6 +57,6 @@ export function rollForEquipment(equipmentMap: Map<number, string>, selectedClas
             equipment = equipment.replace("4", quantity.toString());
         }
         attempts++;
-    } while ((selectedClass === 'characterGenerator.classes.onmyoji' || selectedClass === 'characterGenerator.classes.yamabushi') && equipment === 'characterGenerator.equipmentMap.unseenText' && attempts < maxAttempts);
+    } while ((selectedClass === CharacterClass.Onmyoji || selectedClass === CharacterClass.Yamabushi) && equipment === 'characterGenerator.equipmentMap.unseenText' && attempts < maxAttempts);
     return equipment || "";
 }

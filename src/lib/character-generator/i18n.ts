@@ -6,23 +6,24 @@ import {
   ClassFeature,
   Feature,
   HonourTenet,
-  Armor
+  Armor,
+  CharacterClass
 } from './types';
 import { rollDice } from './utils';
 
 type Translator = (key: string, params?: any) => any;
 
-export const getClasses = (): string[] => [
-  'characterGenerator.classes.forgottenRonin',
-  'characterGenerator.classes.eruditeSamurai',
-  'characterGenerator.classes.drunkenMonk',
-  'characterGenerator.classes.corruptedShinobi',
-  'characterGenerator.classes.onmyoji',
-  'characterGenerator.classes.bakuto',
-  'characterGenerator.classes.yamabushi',
-  'characterGenerator.classes.wildDancer',
-  'characterGenerator.classes.recklessSumo',
-  'characterGenerator.classes.swordSaint',
+export const getClasses = (): CharacterClass[] => [
+  CharacterClass.ForgottenRonin,
+  CharacterClass.EruditeSamurai,
+  CharacterClass.DrunkenMonk,
+  CharacterClass.CorruptedShinobi,
+  CharacterClass.Onmyoji,
+  CharacterClass.Bakuto,
+  CharacterClass.Yamabushi,
+  CharacterClass.WildDancer,
+  CharacterClass.RecklessSumo,
+  CharacterClass.SwordSaint,
 ];
 
 export const getNickNames = (): NickName[] => [
@@ -203,8 +204,8 @@ export const getAwfulAfflictionsMap = (): Map<number, string> => new Map<number,
   [20, 'characterGenerator.awfulAfflictions.delusional'],
 ]);
 
-export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature } => ({
-  ['characterGenerator.classes.forgottenRonin']: {
+export const getClassFeatures = (t: Translator): Record<CharacterClass, ClassFeature> => ({
+  [CharacterClass.ForgottenRonin]: {
     modifiers: { swiftness: 2, spirit: -2, vigor: 2, resilience: 2, honour: -1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 10)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -231,7 +232,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     }
   },
-  ['characterGenerator.classes.eruditeSamurai']: {
+  [CharacterClass.EruditeSamurai]: {
     modifiers: { swiftness: -1, spirit: -1, vigor: 2, resilience: 1, honour: 2 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(3, 6) * 10,
@@ -259,7 +260,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.drunkenMonk']: {
+  [CharacterClass.DrunkenMonk]: {
     modifiers: { swiftness: 2, spirit: 2, vigor: 1, resilience: -2, honour: -1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -287,7 +288,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.corruptedShinobi']: {
+  [CharacterClass.CorruptedShinobi]: {
     modifiers: { swiftness: 2, spirit: 2, vigor: -1, resilience: 1, honour: -2 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(2, 6) * 10,
@@ -316,7 +317,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.onmyoji']: {
+  [CharacterClass.Onmyoji]: {
     modifiers: { swiftness: -1, spirit: 3, vigor: 2, resilience: -1, honour: 0 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -344,7 +345,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.bakuto']: {
+  [CharacterClass.Bakuto]: {
     modifiers: { swiftness: -2, spirit: 2, vigor: 2, resilience: -1, honour: 1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 10)),
     rollRyo: () => rollDice(3, 6) * 10,
@@ -372,7 +373,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.yamabushi']: {
+  [CharacterClass.Yamabushi]: {
     modifiers: { swiftness: 1, spirit: 2, vigor: -1, resilience: 1, honour: 1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -400,7 +401,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.wildDancer']: {
+  [CharacterClass.WildDancer]: {
     modifiers: { swiftness: -1, spirit: 2, vigor: 2, resilience: -2, honour: -1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -428,7 +429,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
       ]
     },
   },
-  ['characterGenerator.classes.recklessSumo']: {
+  [CharacterClass.RecklessSumo]: {
     modifiers: { swiftness: -2, spirit: -1, vigor: 3, resilience: 2, honour: 1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 12)),
     rollRyo: () => rollDice(1, 6) * 10,
@@ -457,7 +458,7 @@ export const getClassFeatures = (t: Translator): { [key: string]: ClassFeature }
     },
     foodConsumption: 'characterGenerator.classFeatures.recklessSumo.foodConsumption',
   },
-  ['characterGenerator.classes.swordSaint']: {
+  [CharacterClass.SwordSaint]: {
     modifiers: { swiftness: 2, spirit: -1, vigor: 2, resilience: 1, honour: 1 },
     calculateHitPoints: (abilities) => Math.max(1, abilities.resilience + rollDice(1, 8)),
     rollRyo: () => rollDice(1, 6) * 10,

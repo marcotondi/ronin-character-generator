@@ -16,7 +16,7 @@ import {
     getAwfulAfflictionsMap,
     getClassFeatures,
 } from './i18n';
-import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor } from './types';
+import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, CLASS_I18N_KEYS } from './types';
 import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment, HonourState } from './utils';
 
 type Translator = (key: string, params?: any) => string;
@@ -71,9 +71,9 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     const hasSpecialEquipment = equipment.includes('characterGenerator.equipmentMap.unseenText') || equipment.includes('characterGenerator.equipmentMap.shintaiText');
     let armor: Armor;
 
-    if (selectedClass === 'characterGenerator.classes.eruditeSamurai') {
+    if (selectedClass === CharacterClass.EruditeSamurai) {
         armor = determineArmorBasedOnRoll(3);
-    } else if (selectedClass === 'characterGenerator.classes.swordSaint') {
+    } else if (selectedClass === CharacterClass.SwordSaint) {
         armor = determineArmorBasedOnRoll(4);
     } else if (hasSpecialEquipment) {
         armor = determineArmorBasedOnRoll(rollDice(1, 2, honourState));
@@ -132,7 +132,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         equipment.push(t(randomEquipment));
     }
 
-    if (selectedClass === 'characterGenerator.classes.yamabushi') {
+    if (selectedClass === CharacterClass.Yamabushi) {
         const unseenTextRoll = rollDice(1, unseenTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextRoll);
         if (unseenText) {
@@ -140,7 +140,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         }
     }
 
-    if (selectedClass === 'characterGenerator.classes.onmyoji') {
+    if (selectedClass === CharacterClass.Onmyoji) {
         const unseenTextKey = rollDice(1, unseenTextsMap.size, honourState);
         const shintaiTextKey = rollDice(1, shintaiTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextKey);
@@ -153,7 +153,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         }
     }
 
-    if (selectedClass === 'characterGenerator.classes.recklessSumo') {
+    if (selectedClass === CharacterClass.RecklessSumo) {
         character.classFeatures = { foodConsumption: classFeatures[selectedClass].foodConsumption! };
     }
 

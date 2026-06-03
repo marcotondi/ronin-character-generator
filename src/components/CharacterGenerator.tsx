@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useState, useEffect } from "react";
 import { generateCharacter } from "@/lib/character-generator";
-import { Character } from "@/lib/character-generator/types";
+import { Character, CLASS_I18N_KEYS } from "@/lib/character-generator/types";
 import { HonourState } from "@/lib/character-generator/utils";
 import { useTranslations } from "next-intl";
 
@@ -109,7 +109,7 @@ export default function CharacterGenerator() {
               </p>
               <p className="text-muted-foreground">{t("page.the")}</p>
               <h3 className="text-3xl font-headline font-bold text-primary/80 tracking-wider">
-                {t(character.class)}
+                {t(CLASS_I18N_KEYS[character.class])}
               </h3>
             </div>
 
