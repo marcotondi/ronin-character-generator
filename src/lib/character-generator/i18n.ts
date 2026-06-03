@@ -10,6 +10,10 @@ import {
   CharacterClass
 } from './types';
 import { rollDice } from './utils';
+import { nicknames } from './data/nicknames';
+import { carryMap, equipmentMap, startingWeaponsMap } from './data/equipment';
+import { unseenTextsMap, shintaiTextsMap } from './data/texts';
+import { brokenBodiesMap, grimChroniclesMap, badHabitsMap, awfulAfflictionsMap } from './data/flaws';
 
 type Translator = (key: string, params?: any) => any;
 
@@ -26,183 +30,25 @@ export const getClasses = (): CharacterClass[] => [
   CharacterClass.SwordSaint,
 ];
 
-export const getNickNames = (): NickName[] => [
-  { english: 'characterGenerator.nickNames.hawkEye', japanese: "Taka no Me", kanji: "鷹の目" },
-  { english: 'characterGenerator.nickNames.dragonOfTheSea', japanese: "Umi no Tatsu", kanji: "海の竜" },
-  { english: 'characterGenerator.nickNames.thunderFang', japanese: "Kaminari no Kiba", kanji: "雷の牙" },
-  { english: 'characterGenerator.nickNames.riverGod', japanese: "Kawa no Kami", kanji: "川の神" },
-  { english: 'characterGenerator.nickNames.mountainWind', japanese: "Yama no Kaze", kanji: "山の風" },
-  { english: 'characterGenerator.nickNames.swordSaintOfTheWind', japanese: "Kaze no Kensei", kanji: "風の剣聖" },
-  { english: 'characterGenerator.nickNames.demonOfTheFog', japanese: "Kiri no Oni", kanji: "霧の鬼" },
-  { english: 'characterGenerator.nickNames.tigerOfHell', japanese: "Jigoku no Tora", kanji: "地獄の虎" },
-  { english: 'characterGenerator.nickNames.foxOfTheNight', japanese: "Yoru no Kitsune", kanji: "夜の狐" },
-  { english: 'characterGenerator.nickNames.blackFang', japanese: "Kuroi Kiba", kanji: "黒い牙" },
-  { english: 'characterGenerator.nickNames.tigerDemon', japanese: "Tora no Oni", kanji: "虎の鬼" },
-  { english: 'characterGenerator.nickNames.catsPaw', japanese: "Neko no Te", kanji: "猫の手" },
-  { english: 'characterGenerator.nickNames.windTengu', japanese: "Kaze no Tengu", kanji: "風の天狗" },
-  { english: 'characterGenerator.nickNames.manSlayer', japanese: "Hitokiri", kanji: "人斬り" },
-  { english: 'characterGenerator.nickNames.knightOfDarkness', japanese: "Yami no Kishi", kanji: "闇の騎士" },
-  { english: 'characterGenerator.nickNames.monsterBoss', japanese: "Bakemono no Oyabun", kanji: "化物の親分" },
-  { english: 'characterGenerator.nickNames.flowerGeisha', japanese: "Hana no Geisha", kanji: "花の芸者" },
-  { english: 'characterGenerator.nickNames.warriorOfThunder', japanese: "Kaminari no Senshi", kanji: "雷の戦士" },
-  { english: 'characterGenerator.nickNames.ghostlyWanderer', japanese: "Yurei no Tomurai", kanji: "幽霊の弔い" },
-  { english: 'characterGenerator.nickNames.blackShadow', japanese: "Kuroi Kage", kanji: "黒い影" },
-];
+export const getNickNames = (): NickName[] => nicknames;
 
-export const getCarryMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.carryMap.emptyHanded'],
-  [2, 'characterGenerator.carryMap.emptyHanded'],
-  [3, 'characterGenerator.carryMap.backpack'],
-  [4, 'characterGenerator.carryMap.sack'],
-  [5, 'characterGenerator.carryMap.smallWagon'],
-  [6, 'characterGenerator.carryMap.trustyPackAnimal'],
-]);
+export const getCarryMap = (): Map<number, string> => carryMap;
 
-export const getEquipmentMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.equipmentMap.rope'],
-  [2, 'characterGenerator.equipmentMap.torches'],
-  [3, 'characterGenerator.equipmentMap.lantern'],
-  [4, 'characterGenerator.equipmentMap.magnesiumStrip'],
-  [5, 'characterGenerator.equipmentMap.unseenText'],
-  [6, 'characterGenerator.equipmentMap.firecrackers'],
-  [7, 'characterGenerator.equipmentMap.healersKits'],
-  [8, 'characterGenerator.equipmentMap.metalFileAndLockpicks'],
-  [9, 'characterGenerator.equipmentMap.bearTrap'],
-  [10, 'characterGenerator.equipmentMap.blackPowderBomb'],
-  [11, 'characterGenerator.equipmentMap.snakeVenomShuriken'],
-  [12, 'characterGenerator.equipmentMap.silverTalisman'],
-]);
+export const getEquipmentMap = (): Map<number, string> => equipmentMap;
 
-export const getStartingWeaponsMap = (): Map<number, Weapon> => new Map<number, Weapon>([
-  [1, { name: 'characterGenerator.startingWeapons.shuriken.name', damage: "d4", amount: 'characterGenerator.startingWeapons.shuriken.amount' }],
-  [2, { name: 'characterGenerator.startingWeapons.tanto.name', damage: "d4" }],
-  [3, { name: 'characterGenerator.startingWeapons.yumi.name', damage: "d6", amount: 'characterGenerator.startingWeapons.yumi.amount' }],
-  [4, { name: 'characterGenerator.startingWeapons.boStaff.name', damage: "d6" }],
-  [5, { name: 'characterGenerator.startingWeapons.naginata.name', damage: "d8" }],
-  [6, { name: 'characterGenerator.startingWeapons.kusarigama.name', damage: "d6", amount: 'characterGenerator.startingWeapons.kusarigama.amount' }],
-  [7, { name: 'characterGenerator.startingWeapons.wakizashi.name', damage: "d6" }],
-  [8, { name: 'characterGenerator.startingWeapons.nunchaku.name', damage: "d6" }],
-  [9, { name: 'characterGenerator.startingWeapons.tanegashima.name', damage: "d8", amount: 'characterGenerator.startingWeapons.tanegashima.amount' }],
-  [10, { name: 'characterGenerator.startingWeapons.katana.name', damage: "d10" }],
-]);
+export const getStartingWeaponsMap = (): Map<number, Weapon> => startingWeaponsMap;
 
-export const getUnseenTextsMap = (): Map<number, UnseenText> => new Map<number, UnseenText>([
-  [1, { title: 'characterGenerator.unseenTexts.whirlwindBlade.title', description: 'characterGenerator.unseenTexts.whirlwindBlade.description' }],
-  [2, { title: 'characterGenerator.unseenTexts.soothingBreeze.title', description: 'characterGenerator.unseenTexts.soothingBreeze.description' }],
-  [3, { title: 'characterGenerator.unseenTexts.thunderingRoar.title', description: 'characterGenerator.unseenTexts.thunderingRoar.description' }],
-  [4, { title: 'characterGenerator.unseenTexts.eagleEye.title', description: 'characterGenerator.unseenTexts.eagleEye.description' }],
-  [5, { title: 'characterGenerator.unseenTexts.shadowStep.title', description: 'characterGenerator.unseenTexts.shadowStep.description' }],
-  [6, { title: 'characterGenerator.unseenTexts.burningBlade.title', description: 'characterGenerator.unseenTexts.burningBlade.description' }],
-  [7, { title: 'characterGenerator.unseenTexts.steelBarrier.title', description: 'characterGenerator.unseenTexts.steelBarrier.description' }],
-  [8, { title: 'characterGenerator.unseenTexts.spectralGuardian.title', description: 'characterGenerator.unseenTexts.spectralGuardian.description' }],
-  [9, { title: 'characterGenerator.unseenTexts.soulDrain.title', description: 'characterGenerator.unseenTexts.soulDrain.description' }],
-  [10, { title: 'characterGenerator.unseenTexts.voidBlast.title', description: 'characterGenerator.unseenTexts.voidBlast.description' }],
-]);
+export const getUnseenTextsMap = (): Map<number, UnseenText> => unseenTextsMap;
 
-export const getShintaiTextsMap = (): Map<number, ShintaiText> => new Map<number, ShintaiText>([
-  [1, { title: 'characterGenerator.shintaiTexts.blessingOfTheGods.title', description: 'characterGenerator.shintaiTexts.blessingOfTheGods.description' }],
-  [2, { title: 'characterGenerator.shintaiTexts.graceOfRedemption.title', description: 'characterGenerator.shintaiTexts.graceOfRedemption.description' }],
-  [3, { title: 'characterGenerator.shintaiTexts.speakWithTheDeparted.title', description: 'characterGenerator.shintaiTexts.speakWithTheDeparted.description' }],
-  [4, { title: 'characterGenerator.shintaiTexts.spiritShield.title', description: 'characterGenerator.shintaiTexts.spiritShield.description' }],
-  [5, { title: 'characterGenerator.shintaiTexts.visionsOfTheBeyond.title', description: 'characterGenerator.shintaiTexts.visionsOfTheBeyond.description' }],
-  [6, { title: 'characterGenerator.shintaiTexts.bestialCommunion.title', description: 'characterGenerator.shintaiTexts.bestialCommunion.description' }],
-  [7, { title: 'characterGenerator.shintaiTexts.divineIllumination.title', description: 'characterGenerator.shintaiTexts.divineIllumination.description' }],
-  [8, { title: 'characterGenerator.shintaiTexts.pureInsight.title', description: 'characterGenerator.shintaiTexts.pureInsight.description' }],
-  [9, { title: 'characterGenerator.shintaiTexts.holyRetribution.title', description: 'characterGenerator.shintaiTexts.holyRetribution.description' }],
-  [10, { title: 'characterGenerator.shintaiTexts.wordOfTheGods.title', description: 'characterGenerator.shintaiTexts.wordOfTheGods.description' }],
-]);
+export const getShintaiTextsMap = (): Map<number, ShintaiText> => shintaiTextsMap;
 
-export const getBrokenBodiesMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.brokenBodies.glazedExpression'],
-  [2, 'characterGenerator.brokenBodies.scarsOrWounds'],
-  [3, 'characterGenerator.brokenBodies.missingLimb'],
-  [4, 'characterGenerator.brokenBodies.emaciatedAndFrail'],
-  [5, 'characterGenerator.brokenBodies.severelyBurned'],
-  [6, 'characterGenerator.brokenBodies.deafInOneEar'],
-  [7, 'characterGenerator.brokenBodies.missingTeeth'],
-  [8, 'characterGenerator.brokenBodies.crippled'],
-  [9, 'characterGenerator.brokenBodies.boilsOrBlisters'],
-  [10, 'characterGenerator.brokenBodies.persistentlyCoughAndWheezing'],
-  [11, 'characterGenerator.brokenBodies.insectBites'],
-  [12, 'characterGenerator.brokenBodies.missingYourTongue'],
-  [13, 'characterGenerator.brokenBodies.nervousSystemDamage'],
-  [14, 'characterGenerator.brokenBodies.severelyObese'],
-  [15, 'characterGenerator.brokenBodies.missingFingersOrToes'],
-  [16, 'characterGenerator.brokenBodies.breathingHeavily'],
-  [17, 'characterGenerator.brokenBodies.permanentlyScowling'],
-  [18, 'characterGenerator.brokenBodies.chronicSkinCondition'],
-  [19, 'characterGenerator.brokenBodies.blind'],
-  [20, 'characterGenerator.brokenBodies.notVeryClean'],
-]);
+export const getBrokenBodiesMap = (): Map<number, string> => brokenBodiesMap;
 
-export const getGrimChroniclesMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.grimChronicles.fledFromClan'],
-  [2, 'characterGenerator.grimChronicles.powerfulEnemy'],
-  [3, 'characterGenerator.grimChronicles.rareArtifact'],
-  [4, 'characterGenerator.grimChronicles.terribleCurse'],
-  [5, 'characterGenerator.grimChronicles.betrayedFriend'],
-  [6, 'characterGenerator.grimChronicles.hauntingVisions'],
-  [7, 'characterGenerator.grimChronicles.shadowyPast'],
-  [8, 'characterGenerator.grimChronicles.vengefulSpirit'],
-  [9, 'characterGenerator.grimChronicles.survivorOfMassacre'],
-  [10, 'characterGenerator.grimChronicles.powerfulAddiction'],
-  [11, 'characterGenerator.grimChronicles.angeredSpirit'],
-  [12, 'characterGenerator.grimChronicles.strangePhenomenon'],
-  [13, 'characterGenerator.grimChronicles.huntedByMonster'],
-  [14, 'characterGenerator.grimChronicles.darkSecret'],
-  [15, 'characterGenerator.grimChronicles.dangerousEnemy'],
-  [16, 'characterGenerator.grimChronicles.dealWithEntity'],
-  [17, 'characterGenerator.grimChronicles.cursedWithAbility'],
-  [18, 'characterGenerator.grimChronicles.unexplainableNightmares'],
-  [19, 'characterGenerator.grimChronicles.insatiableHunger'],
-  [20, 'characterGenerator.grimChronicles.markedByDarkForce'],
-]);
+export const getGrimChroniclesMap = (): Map<number, string> => grimChroniclesMap;
 
-export const getBadHabitsMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.badHabits.compulsivelyHoard'],
-  [2, 'characterGenerator.badHabits.cripplingFear'],
-  [3, 'characterGenerator.badHabits.urgeToSpeakYourMind'],
-  [4, 'characterGenerator.badHabits.addictedToSubstance'],
-  [5, 'characterGenerator.badHabits.habitOfStealing'],
-  [6, 'characterGenerator.badHabits.angerManagementIssues'],
-  [7, 'characterGenerator.badHabits.chronicInsomnia'],
-  [8, 'characterGenerator.badHabits.extremelyParanoid'],
-  [9, 'characterGenerator.badHabits.terribleMemory'],
-  [10, 'characterGenerator.badHabits.persistentProcrastinator'],
-  [11, 'characterGenerator.badHabits.obsessedWithCounting'],
-  [12, 'characterGenerator.badHabits.oftenMumble'],
-  [13, 'characterGenerator.badHabits.alwaysLosingItems'],
-  [14, 'characterGenerator.badHabits.needToKeepWeaponsClean'],
-  [15, 'characterGenerator.badHabits.tellOverlyLongTales'],
-  [16, 'characterGenerator.badHabits.collectEars'],
-  [17, 'characterGenerator.badHabits.constantlyFidgeting'],
-  [18, 'characterGenerator.badHabits.loudNervousSneezes'],
-  [19, 'characterGenerator.badHabits.hateBeingTouched'],
-  [20, 'characterGenerator.badHabits.cannotHelpButStealFood'],
-]);
+export const getBadHabitsMap = (): Map<number, string> => badHabitsMap;
 
-export const getAwfulAfflictionsMap = (): Map<number, string> => new Map<number, string>([
-  [1, 'characterGenerator.awfulAfflictions.paranoid'],
-  [2, 'characterGenerator.awfulAfflictions.sadistic'],
-  [3, 'characterGenerator.awfulAfflictions.narcissistic'],
-  [4, 'characterGenerator.awfulAfflictions.compulsiveLiar'],
-  [5, 'characterGenerator.awfulAfflictions.selfDestructive'],
-  [6, 'characterGenerator.awfulAfflictions.envious'],
-  [7, 'characterGenerator.awfulAfflictions.antisocial'],
-  [8, 'characterGenerator.awfulAfflictions.addicted'],
-  [9, 'characterGenerator.awfulAfflictions.shortTempered'],
-  [10, 'characterGenerator.awfulAfflictions.greedy'],
-  [11, 'characterGenerator.awfulAfflictions.pessimistic'],
-  [12, 'characterGenerator.awfulAfflictions.manipulative'],
-  [13, 'characterGenerator.awfulAfflictions.careless'],
-  [14, 'characterGenerator.awfulAfflictions.aggressive'],
-  [15, 'characterGenerator.awfulAfflictions.insecure'],
-  [16, 'characterGenerator.awfulAfflictions.hedonistic'],
-  [17, 'characterGenerator.awfulAfflictions.fanatical'],
-  [18, 'characterGenerator.awfulAfflictions.hypocritical'],
-  [19, 'characterGenerator.awfulAfflictions.unreliable'],
-  [20, 'characterGenerator.awfulAfflictions.delusional'],
-]);
+export const getAwfulAfflictionsMap = (): Map<number, string> => awfulAfflictionsMap;
 
 export const getClassFeatures = (t: Translator): Record<CharacterClass, ClassFeature> => ({
   [CharacterClass.ForgottenRonin]: {
