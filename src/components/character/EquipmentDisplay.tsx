@@ -53,8 +53,8 @@ export function EquipmentDisplay({ character }: EquipmentDisplayProps) {
             {t("page.equipment")}
           </h3>
           <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-            {character.equipment.map((item) => (
-              <li key={item}>{item}</li>
+            {character.equipment.map((item, index) => (
+              <li key={index}>{item}</li>
             ))}
           </ul>
         </div>
