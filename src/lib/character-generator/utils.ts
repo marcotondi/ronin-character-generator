@@ -47,6 +47,8 @@ export function determineArmorBasedOnRoll(roll: number): Armor {
 export function rollForEquipment(equipmentMap: Map<number, string>, selectedClass: string): string {
     let roll: number;
     let equipment: string | undefined;
+    let attempts = 0;
+    const maxAttempts = 10;
     do {
         roll = rollDice(1, equipmentMap.size);
         equipment = equipmentMap.get(roll);
@@ -54,6 +56,7 @@ export function rollForEquipment(equipmentMap: Map<number, string>, selectedClas
             const quantity = rollDice(1, 4);
             equipment = equipment.replace("4", quantity.toString());
         }
-    } while ((selectedClass === 'characterGenerator.classes.onmyoji' || selectedClass === 'characterGenerator.classes.yamabushi') && equipment === 'characterGenerator.equipmentMap.unseenText');
+        attempts++;
+    } while ((selectedClass === 'characterGenerator.classes.onmyoji' || selectedClass === 'characterGenerator.classes.yamabushi') && equipment === 'characterGenerator.equipmentMap.unseenText' && attempts < maxAttempts);
     return equipment || "";
 }

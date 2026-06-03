@@ -197,9 +197,9 @@ export default function CharacterGenerator() {
                   {t("page.weapons")}
                 </h3>
                 <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-                  {character.classWeapons.map((weapon, index) => (
-                    <li key={index}>
-                      <strong style={{ color: "#ECCF18" }}>
+                  {character.classWeapons.map((weapon) => (
+                    <li key={weapon.name}>
+                      <strong className="text-primary">
                         {t(weapon.name)}{" "}
                       </strong>
                       {weapon.damage ? weapon.damage : ""}{" "}
@@ -232,8 +232,8 @@ export default function CharacterGenerator() {
                   {t("page.equipment")}
                 </h3>
                 <ul className="list-disc list-inside space-y-1 pl-2 text-muted-foreground">
-                  {character.equipment.map((item, index) => (
-                    <li key={index}>{item}</li>
+                  {character.equipment.map((item) => (
+                    <li key={item}>{item}</li>
                   ))}
                 </ul>
               </div>
