@@ -26,7 +26,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale} className="dark">
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
