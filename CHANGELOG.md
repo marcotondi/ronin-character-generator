@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2-beta] - 2026-08-10
+
+### Changed
+- Removed 30 unused shadcn/ui components and their dependencies (~5.9k lines; production deps 39 → 9)
+- Flattened the character-generator i18n facade: data maps imported directly, class data moved to `data/classes.ts`
+- Removed dead `Character` fields (`texts`, `otherEquipment`, `honor`) and merged `randomUnseenText` into `unseenText`
+- Replaced `react-icons` GitHub icon with inline SVG; cleaned dead `next.config.ts` and `tailwind.config.ts` config
+- Fixed pre-existing Next 15 async-`params` typing in layout/page so `npm run typecheck` passes
+
 ## [1.2.1-beta] - 2025-06-03
 
 ### Fixed

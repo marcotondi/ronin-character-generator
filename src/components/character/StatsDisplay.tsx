@@ -22,7 +22,7 @@ export function StatsDisplay({ character }: StatsDisplayProps) {
       </p>
       <p>
         <span className="font-bold">{t("page.honor")}</span>{" "}
-        {character.honor} ({t(character.honorStatus)})
+        {character.abilities.honour} ({t(character.honorStatus)})
       </p>
       <p>
         <span className="font-bold">{t("page.ryo")}</span>{" "}

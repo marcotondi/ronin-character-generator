@@ -116,7 +116,7 @@ export default function CharacterGenerator() {
 
             <EquipmentDisplay character={character} />
 
-            {(character.unseenText || character.randomUnseenText || character.shintaiText) && (
+            {(character.unseenText || character.shintaiText) && (
               <>
                 <Separator className="my-8" />
                 <TextsDisplay character={character} />

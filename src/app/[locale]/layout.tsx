@@ -1,4 +1,4 @@
-import Footer from '@/components/ui/Footer';
+import Footer from '@/components/Footer';
 import type { Metadata } from "next";
 import "../globals.css";
 
@@ -20,7 +20,7 @@ export default async function RootLayout({
   params
 }: Readonly<{
   children: React.ReactNode;
-  params: {locale: string};
+  params: Promise<{locale: string}>;
 }>) {
   // Await dei params prima di usarli
   const { locale } = await params;

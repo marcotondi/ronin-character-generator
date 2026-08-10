@@ -14,19 +14,7 @@ const nextConfig: NextConfig = {
   },
   images: {
     unoptimized: true, // Necessario per l'export statico
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-    ],
   },
-  // Aggiungi la configurazione next-intl manualmente
-  experimental: {
-    typedRoutes: false
-  }
 };
 
 export default withNextIntl(nextConfig);

@@ -2,21 +2,12 @@ import {
     firstNames,
     lastNames,
 } from './constants';
-import {
-    getClasses,
-    getNickNames,
-    getCarryMap,
-    getEquipmentMap,
-    getStartingWeaponsMap,
-    getUnseenTextsMap,
-    getShintaiTextsMap,
-    getBrokenBodiesMap,
-    getGrimChroniclesMap,
-    getBadHabitsMap,
-    getAwfulAfflictionsMap,
-    getClassFeatures,
-} from './i18n';
-import { Character, Abilities, UnseenText, ShintaiText, Weapon, Armor, CharacterClass, Modifiers, ClassFeature } from './types';
+import { CLASSES, classFeatures } from './data/classes';
+import { nicknames } from './data/nicknames';
+import { carryMap, equipmentMap, startingWeaponsMap } from './data/equipment';
+import { unseenTextsMap, shintaiTextsMap } from './data/texts';
+import { brokenBodiesMap, grimChroniclesMap, badHabitsMap, awfulAfflictionsMap } from './data/flaws';
+import { Character, Abilities, Weapon, Armor, CharacterClass, Modifiers, ClassFeature } from './types';
 import { getRandomItem, rollDice, getAbilityModifier, determineArmorBasedOnRoll, rollForEquipment, HonourState } from './utils';
 
 type Translator = (key: string, params?: any) => string;
@@ -44,11 +35,6 @@ function rollArmor(selectedClass: CharacterClass, hasSpecialEquipment: boolean, 
 }
 
 function rollFlaws(honourState: HonourState) {
-    const brokenBodiesMap = getBrokenBodiesMap();
-    const grimChroniclesMap = getGrimChroniclesMap();
-    const badHabitsMap = getBadHabitsMap();
-    const awfulAfflictionsMap = getAwfulAfflictionsMap();
-
     return {
         brokenBodies: brokenBodiesMap.get(rollDice(1, 20, honourState)),
         grimChronicles: grimChroniclesMap.get(rollDice(1, 20, honourState)),
@@ -58,25 +44,16 @@ function rollFlaws(honourState: HonourState) {
 }
 
 function rollForStartingWeapon(honourState: HonourState): Weapon | undefined {
-    const startingWeaponsMap = getStartingWeaponsMap();
     const weaponRoll = rollDice(1, startingWeaponsMap.size, honourState);
     return startingWeaponsMap.get(weaponRoll);
 }
 
 export function generateCharacter(t: Translator, honourState: HonourState = "none"): Character {
-    const classes = getClasses();
-    const nickNames = getNickNames();
-    const carryMap = getCarryMap();
-    const equipmentMap = getEquipmentMap();
-    const unseenTextsMap = getUnseenTextsMap();
-    const shintaiTextsMap = getShintaiTextsMap();
-    const classFeatures = getClassFeatures();
-
-    const selectedClass = getRandomItem(classes);
+    const selectedClass = getRandomItem(CLASSES);
     const classMods = classFeatures[selectedClass].modifiers;
     const firstName = getRandomItem(firstNames);
     const lastName = getRandomItem(lastNames);
-    const nickName = getRandomItem(nickNames);
+    const nickName = { ...getRandomItem(nicknames) };
     nickName.english = t(nickName.english);
 
     const abilities = rollAbilities(classMods, honourState);
@@ -87,7 +64,6 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     equipment.push(t(randomCarry));
 
     const randomEquipment = rollForEquipment(equipmentMap, selectedClass);
-    const texts: (UnseenText | ShintaiText)[] = [];
     const food = rollDice(1, 4, honourState);
     const water = rollDice(1, 4, honourState);
     equipment.push(`${food} ${t('characterGenerator.equipment.food')}`);
@@ -101,7 +77,6 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
     const flaws = rollFlaws(honourState);
 
     const classWeapons = [...classFeatures[selectedClass].weapons];
-    const otherEquipment = [...classFeatures[selectedClass].startingEquipment];
     const randomStartingWeapon = rollForStartingWeapon(honourState);
 
     const character: Character = {
@@ -111,18 +86,15 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         nickName,
         abilities,
         hitPoints,
-        honor: abilities.honour,
         honorStatus,
         ryo: classFeatures[selectedClass].rollRyo(),
         virtues: classFeatures[selectedClass].rollVirtues(),
         virtuesDice: classFeatures[selectedClass].virtuesDice,
         feature: selectedFeature!,
         equipment,
-        texts,
         honourTenets: classFeatures[selectedClass].honourTenets,
         armor,
         classWeapons,
-        otherEquipment,
         brokenBodies: flaws.brokenBodies,
         grimChronicles: flaws.grimChronicles,
         badHabits: flaws.badHabits,
@@ -138,7 +110,7 @@ export function generateCharacter(t: Translator, honourState: HonourState = "non
         const unseenTextKey = rollDice(1, unseenTextsMap.size, honourState);
         const unseenText = unseenTextsMap.get(unseenTextKey);
         if (unseenText) {
-            character.randomUnseenText = unseenText;
+            character.unseenText = unseenText;
         }
     } else {
         const translatedItem = t(randomEquipment);
