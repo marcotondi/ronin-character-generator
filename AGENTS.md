@@ -4,6 +4,7 @@
 
 - `npm run dev` — starts on **port 9002** (not 3000)
 - `npm run typecheck` — `tsc --noEmit`; run this to verify types
+- `npm run smoke` — runs the character-generator regression smoke test (`scripts/smoke.cjs`)
 - `npm run build` — static export to `out/`; TS and ESLint errors are **ignored** during build (`ignoreBuildErrors`, `ignoreDuringBuilds`)
 - `npm run lint` — ESLint is **not yet configured** (prompts interactively on first run)
 - No test framework is set up
